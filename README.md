@@ -1,1 +1,1 @@
-Manuscript comparing MR (T2WI) and ARFI imaging delineation of prostate zonal anatomy.
+Acoustic Radiation Force Impulse (ARFI) Prostate Zonal Anatomy: Comparison with Endorectal T2-Weighted MR Imaging (T2WI)
