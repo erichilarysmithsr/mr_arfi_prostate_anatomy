@@ -1,0 +1,58 @@
+\documentclass[onecolumn,draftcls]{IEEEtran}
+\usepackage{epsf,graphicx,color}
+\usepackage{lineno}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{soul}
+
+\newcommand{\exvivo}{\textit{ex vivo }}
+\newcommand{\invivo}{\textit{in vivo }}
+\newcommand{\invitro}{\textit{in vitro }}
+\newcommand{\insitu}{\textit{in situ }}
+\newcommand{\degree}{$^\circ$}
+\newcommand{\isppa}{$I_\textrm{sppa}$}
+\newcommand{\etal}{\textit{et al. }}
+\newcommand{\attenunit}{dB$\cdot$cm$^{-1}$MHz$^{-1}$}
+
+\begin{document}
+
+\input{title}
+
+\linenumbers
+
+\input{abstract}
+
+\section*{KEYWORDS}
+\input{keywords}
+
+\section{INTRODUCTION}\label{sect:intro}
+\input{intro}
+
+\section{BACKGROUND}\label{sect:background}
+\input{background}
+
+\section{METHODS}\label{sect:methods}
+\input{methods}
+
+\section{RESULTS}\label{sect:results}
+\input{results}
+
+\section{DISCUSSION}\label{sect:discussion}
+\input{discussion}
+
+\section{CONCLUSIONS}
+\input{conclusions}
+
+\section*{ACKNOWLEDGEMENTS}
+The authors would like to thank Siemens Medical Solution USA, Ultrasound
+Division for their in-kind technical support and Ned Danieley for system administration support.
+This work was supported by NIH R01CA142824 and the Duke Coulter Translational Grant Program.
+
+\section*{DISCLOSURES}
+Some of the authors on this manuscript hold intellectual property related to
+ARFI imaging.  There are no financial disclosures for the authors.
+
+\bibliographystyle{IEEEtran}
+\bibliography{library}
+
+\end{document}
