@@ -1,0 +1,33 @@
+\subsection{ARFI Imaging Methods}
+Experimental ARFI imaging data were acquired using a modified Siemens Acuson
+SC2000 ultrasound scanner (Siemens Healthcare, Ultrasound Business Unit,
+Mountain View, CA, USA) and the longitudinal array of an Acuson ER7B
+transducer~\cite{Rosenzweig2012}.  The ARFI imaging sequence was comprised of
+standard B-mode ultrasonic imaging, or tracking beams, and pushing beams. For
+each lateral location, two pre-push reference images were acquired, then three
+300 cycle pushing pulses were transmitted in rapid succession, focused at 30
+mm, 22.5 mm, and 15 mm, respectively, and finally the response of the tissue
+was tracked for up to 6ms at a PRF of 8kHz. This pushing strategy is similar to
+what has been published by Bercoff et al~\cite{BercoffSSI}. The 30 mm and 22.5
+mm foci pushing pulses were transmitted at 4.6 MHz with a F/2 geometry and the
+15 mm focus pushing pulse was transmitted at 5.4 MHz with a F/2.35 geometry to
+maintain the same beamwidth (0.67 mm) throughout the region of excitation. A
+total of 82 lateral locations were interrogated to cover the 55 mm field of
+view, translating 0.67 mm laterally per location.
+
+For the tracking pulses, 16 parallel receive lines at 5.0 MHz were spaced to
+observe both the on and off-axis response of the tissue to the pushing pulses.
+Specifically, four lines were dedicated to tracking the on-axis displacement,
+with all 4 beams located inside the beamwidth of the pushing pulses such that
+the beam spacing was 0.17 mm. The other twelve lines were separated into two
+groups to observe both the left and right propagating waves. For each sub-group
+of 6, the beams were located 1.89 mm laterally offset from the push and had an
+inter-beam spacing of 0.76 mm to cover a total field of view of 11.3 mm
+laterally. For brevity, the 4 on-axis beams will be referred to as the ARFI
+data and the 12 off-axis beams will be referred to as the SWEI data.
+
+Displacement estimation was performed using a phase shift estimator on the
+beamformed IQ data~\cite{Loupas1,Pinton1}. The ARFI data were then normalized
+as a function of depth to account for attenuation and focal gain effects by
+taking the mean displacement across the entire data set at each time step then
+low-pass filtering with a cutoff frequency of 0.8 mm$^{-1}$.
