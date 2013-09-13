@@ -58,6 +58,7 @@ set(gca, ...
     'FontSize'    , fs);
 
 print('-depsc2','mr_arfi_volumes.eps');
+close;
 
 % lets do a little more processing to figure out what is going on... first the
 % relative volume in ARFI relative to MR
@@ -76,6 +77,7 @@ a(4) = 110;
 axis(a);
 text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',fs);
 print('-depsc2','mr_arfi_volume_diff.eps');
+close;
 
 % now lets look at the relative ratios of CG:total volume for each modality
 mr_cg_total = (mr_cg_vol./mr_total_vol)*100;
@@ -99,4 +101,6 @@ axis(a);
 text(1,90,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_cz_total-mr_cg_total),std(arfi_cz_total-mr_cg_total)),'FontSize',fs);
 
 print('-depsc2','mr_arfi_central_total_diff.eps');
+close;
 
+system('convert_eps_to_pdf.sh');
