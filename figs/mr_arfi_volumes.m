@@ -10,6 +10,7 @@
 
 vols = csvread('../data/Prostate_CZ_PZ_Volume_Axis_Measurements.csv');
 
+Pnum = num2cell(vols(:,1));
 mr_cg_vol = vols(:,2);
 mr_total_vol = vols(:,3);
 mr_pz_vol = mr_total_vol - mr_cg_vol;
@@ -43,6 +44,7 @@ a(2) = 17;
 axis(a);
 legend('Central Gland','Peripheral Zone','Location','NorthWest');
 legend boxoff;
+%set(gca,'XTickLabel',Pcell)
 
 set(gca, ...
     'Box'         , 'off'     , ...
