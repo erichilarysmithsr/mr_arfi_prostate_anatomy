@@ -59,3 +59,21 @@ set(gca, ...
     'FontSize'    , fs);
 
 print('-depsc2','mr_arfi_volumes.eps');
+
+% lets do a little more processing to figure out what is going on... first the
+% relative volume in ARFI relative to MR
+
+arfi_mr_vol_diff = ((arfi_total_vol./mr_total_vol) - 1)*100;
+figure;
+bar([1:length(MRdataStack)],arfi_mr_vol_diff,0.5);
+title('ARFI:MR Total Volume Comparison','FontSize',fs);
+xlabel('Study Subject','FontSize',fs);
+ylabel('Percent Difference','FontSize',fs);
+set(gca,'FontSize',fs);
+a=axis;
+a(2) = 17;
+a(3) = -5;
+a(4) = 110;
+axis(a);
+text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',18);
+print('-depsc2','mr_arfi_volume_diff.eps');
