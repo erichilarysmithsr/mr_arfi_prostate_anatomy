@@ -1,1 +1,1 @@
-latexmk -bibtex -pdf mr_arfi_anatomy.tex
+latexmk -bibtex -pdf -pvc mr_arfi_anatomy.tex
