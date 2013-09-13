@@ -35,7 +35,6 @@ set(h(1),'FaceColor',[0 0 1]);
 set(h(2),'FaceColor',[1 0 0]);
 set(g(1),'FaceColor',[0 1 0]);
 set(g(2),'FaceColor',[1 1 0]);
-colormap(winter)
 ylabel('Zone Volumes (cm^3)','FontSize',fs)
 xlabel('Study Subject','FontSize',fs);
 title('MR (Red/Blue) and ARFI (Yellow/Green) Zone Volumes','FontSize',fs);
@@ -75,5 +74,29 @@ a(2) = 17;
 a(3) = -5;
 a(4) = 110;
 axis(a);
-text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',18);
+text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',fs);
 print('-depsc2','mr_arfi_volume_diff.eps');
+
+% now lets look at the relative ratios of CG:total volume for each modality
+mr_cg_total = (mr_cg_vol./mr_total_vol)*100;
+arfi_cz_total = (arfi_cz_vol./arfi_total_vol)*100;
+
+figure;
+hold on;
+h=bar([1:length(MRdataStack)],mr_cg_total,bar_width);
+set(h(1),'FaceColor',[0 0 1]);
+g=bar([1:length(ARFIdataStack)]+bar_width,arfi_cz_total,bar_width);
+set(g(1),'FaceColor',[0 1 0]);
+xlabel('Study Subject','FontSize',fs);
+ylabel('Ratio of Central : Total Volume','FontSize',fs);
+title('MR and ARFI Central : Total Ratios','FontSize',fs);
+set(gca,'FontSize',fs);
+a = axis;
+a(2) = 17;
+a(4) = 100;
+axis(a);
+
+text(1,90,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_cz_total-mr_cg_total),std(arfi_cz_total-mr_cg_total)),'FontSize',fs);
+
+print('-depsc2','mr_arfi_central_total_diff.eps');
+
