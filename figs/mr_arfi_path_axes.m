@@ -1,100 +1,114 @@
-% mr_arfi_path_axes.m
-%
-% Generate plots of the axis-ratios for MR, ARFI and pathology.
-%
-% Mark Palmeri
-% mlp6@duke.edu
-% 2013-09-14
+function mr_arfi_path_axes
+    % function mr_arfi_path_axes
+    %
+    % Generate plots of the axis-ratios for MR, ARFI and pathology.
+    %
+    % Mark Palmeri
+    % mlp6@duke.edu
+    % 2013-09-14
 
-data = csvread('../data/Prostate_CZ_PZ_Volume_Axis_Measurements.csv');
+    data = csvread('../data/Prostate_CZ_PZ_Volume_Axis_Measurements.csv');
 
-Pnum = num2cell(data(:,1));
+    Pnum = num2cell(data(:,1));
 
-% ordering the axes as:
-% (1) APEX-TO-BASE (axial)
-% (2) LATERAL-TO-LATERAL (lat)
-% (3) ANTERIOR-TO-POSTERIOR (elev)
-MRaxes = [data(:,IAMHERE];
-ARFIaxes = [arfi_cz_vol, arfi_pz_vol];
-PATHaxes
+    % ordering the axes as:
+    % (1) APEX-TO-BASE (axial)
+    % (2) LATERAL-TO-LATERAL (lat)
+    % (3) ANTERIOR-TO-POSTERIOR (elev)
+    MR_central_axes = [data(:,4:6)];
+    MR_total_axes = [data(:,7:9)];
+    ARFI_central_axes = [data(:,12:14)];
+    ARFI_total_axes = [data(:,15:18)];
+    PATH_total_axes = [data(:,19:21)];
 
-% fontsize
-fs = 18;
-bar_width = 0.3;
+    % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
+    % imaging central and total and path total volumes
+    MR_central_ratios = compute_ratios(MR_central_axes);
+    MR_total_ratios = compute_ratios(MR_total_axes);
+    ARFI_central_ratios = compute_ratios(ARFI_central_axes);
+    ARFI_total_ratios = compute_ratios(ARFI_total_axes);
+    PATH_total_ratios = compute_ratios(PATH_total_axes);
 
-figure;
-hold on;
-h=bar([1:length(MRdataStack)],MRdataStack,bar_width,'stacked');
-g=bar([1:length(ARFIdataStack)]+bar_width,ARFIdataStack,bar_width,'stacked');
-set(h(1),'FaceColor',[0 0 1]);
-set(h(2),'FaceColor',[1 0 0]);
-set(g(1),'FaceColor',[0 1 0]);
-set(g(2),'FaceColor',[1 1 0]);
-ylabel('Zone Volumes (cm^3)','FontSize',fs)
-xlabel('Study Subject','FontSize',fs);
-title('MR (Red/Blue) and ARFI (Yellow/Green) Zone Volumes','FontSize',fs);
-a=axis;
-a(2) = 17;
-axis(a);
-legend('Central Gland','Peripheral Zone','Location','NorthWest');
-legend boxoff;
-%set(gca,'XTickLabel',Pcell)
+    % fontsize
+    fs = 18;
 
-set(gca, ...
-    'Box'         , 'off'     , ...
-    'TickDir'     , 'out'     , ...
-    'TickLength'  , [.01 .01] , ...
-    'XMinorTick'  , 'off'      , ...
-    'YMinorTick'  , 'off'      , ...
-    'XGrid'       , 'off'      , ...
-    'XColor'      , [0 0 0], ...
-    'YColor'      , [0 0 0], ...
-    'XMinorGrid'  , 'off'      , ...
-    'LineWidth'   , 2, ...
-    'FontSize'    , fs);
+    titles={'(Lateral-to-Lateral : Apex-to-Base)',...
+            '(Anterior-to-Posterior : Apex-to-Base)',...
+            '(Lateral-to-Lateral : Anterior-to-Posterior)'};
 
-print('-depsc2','mr_arfi_volumes.eps');
-close;
+    for i=1:3,
+        figure;
+        hold on;
+        bar_width = 0.25;
+        h=bar([1:length(MR_total_ratios(:,i))],MR_total_ratios(:,i),bar_width);
+        g=bar([1:length(ARFI_total_ratios(:,i))]+bar_width,ARFI_total_ratios(:,i),bar_width);
+        f=bar([1:length(PATH_total_ratios(:,i))]+2*bar_width,PATH_total_ratios(:,i),bar_width);
+        set(h(1),'FaceColor',[0 0 1]);
+        set(g(1),'FaceColor',[0 1 0]);
+        set(f(1),'FaceColor',[1 0 0]);
+        ylabel('Axis Ratios','FontSize',fs)
+        xlabel('Study Subject','FontSize',fs);
+        title(sprintf('Total Prostate Axes: %s',titles{i}),'FontSize',fs);
+        a=axis;
+        a(2) = 17;
+        axis(a);
+        legend('MR (Blue)','ARFI (Green)','PATH (Red)','Location','NorthEast');
+        legend boxoff;
+        %set(gca,'XTickLabel',Pcell)
 
-% lets do a little more processing to figure out what is going on... first the
-% relative volume in ARFI relative to MR
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
 
-arfi_mr_vol_diff = ((arfi_total_vol./mr_total_vol) - 1)*100;
-figure;
-bar([1:length(MRdataStack)],arfi_mr_vol_diff,0.5);
-title('ARFI:MR Total Volume Comparison','FontSize',fs);
-xlabel('Study Subject','FontSize',fs);
-ylabel('Percent Difference','FontSize',fs);
-set(gca,'FontSize',fs);
-a=axis;
-a(2) = 17;
-a(3) = -5;
-a(4) = 110;
-axis(a);
-text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',fs);
-print('-depsc2','mr_arfi_volume_diff.eps');
-close;
+        print('-depsc2',sprintf('mr_arfi_total_axes%i.eps',i));
+        close;
+    end;
 
-% now lets look at the relative ratios of CG:total volume for each modality
-mr_cg_total = (mr_cg_vol./mr_total_vol)*100;
-arfi_cz_total = (arfi_cz_vol./arfi_total_vol)*100;
+    for i=1:3,
+        figure;
+        hold on;
+        bar_width = 0.33;
+        h=bar([1:length(MR_central_ratios(:,i))],MR_central_ratios(:,i),bar_width);
+        g=bar([1:length(ARFI_central_ratios(:,i))]+bar_width,ARFI_central_ratios(:,i),bar_width);
+        set(h(1),'FaceColor',[0 0 1]);
+        set(g(1),'FaceColor',[0 1 0]);
+        ylabel('Axis Ratios','FontSize',fs)
+        xlabel('Study Subject','FontSize',fs);
+        title(sprintf('Total Prostate Axes: %s',titles{i}),'FontSize',fs);
+        a=axis;
+        a(2) = 17;
+        axis(a);
+        legend('MR (Blue)','ARFI (Green)','Location','NorthWest');
+        legend boxoff;
+        %set(gca,'XTickLabel',Pcell)
 
-figure;
-hold on;
-h=bar([1:length(MRdataStack)],mr_cg_total,bar_width);
-set(h(1),'FaceColor',[0 0 1]);
-g=bar([1:length(ARFIdataStack)]+bar_width,arfi_cz_total,bar_width);
-set(g(1),'FaceColor',[0 1 0]);
-xlabel('Study Subject','FontSize',fs);
-ylabel('Ratio of Central : Total Volume','FontSize',fs);
-title('MR and ARFI Central : Total Ratios','FontSize',fs);
-set(gca,'FontSize',fs);
-a = axis;
-a(2) = 17;
-a(4) = 100;
-axis(a);
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
 
-text(1,90,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_cz_total-mr_cg_total),std(arfi_cz_total-mr_cg_total)),'FontSize',fs);
+        print('-depsc2',sprintf('mr_arfi_central_axes%i.eps',i));
+        close;
+    end;
 
-print('-depsc2','mr_arfi_path_axes.eps');
-close;
+function [ratios]=compute_ratios(axes)
+    ratios(:,1) = axes(:,2)./axes(:,1);
+    ratios(:,2) = axes(:,3)./axes(:,1);
+    ratios(:,3) = axes(:,3)./axes(:,2);
