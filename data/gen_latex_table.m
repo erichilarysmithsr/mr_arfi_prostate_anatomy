@@ -23,3 +23,11 @@ for i=1:size(data,1),
 end;
 
 fclose(fid);
+
+fid = fopen('path_data.tex','w');
+
+for i=1:size(data,1),
+    fprintf(fid,'%i & %.2f & %.2f & %.2f & %.2f & %.2f \\\\ \n',i,data(i,18),data(i,19),data(i,20),data(i,21),data(i,22)); 
+end;
+
+fclose(fid);
