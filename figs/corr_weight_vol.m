@@ -13,8 +13,8 @@ function corr_weight_vol()
     Pnum = num2cell(vols(:,1));
     mr_total_vol = vols(:,3);
     arfi_total_vol = vols(:,11);
-    w = vols(:,12);
-    path_vols = vols(:,16);
+    w = vols(:,18);
+    path_vols = vols(:,22);
 
     mr_total_vol = mr_total_vol/1e3;
     arfi_total_vol = arfi_total_vol/1e3;
@@ -23,7 +23,6 @@ function corr_weight_vol()
     gen_fig_n_fits(path_vols,mr_total_vol,arfi_total_vol,'pathVol');
     gen_fig_n_fits(w,path_vols,path_vols,'path_vol_weight');
 
-    system('convert_eps_to_pdf.sh');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function gen_fig_n_fits(w,mr_total_vol,arfi_total_vol,metric)
     % fontsize

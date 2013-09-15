@@ -104,5 +104,3 @@ text(1,90,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_cz_total-mr_cg_total),st
 
 print('-depsc2','mr_arfi_central_total_diff.eps');
 close;
-
-system('convert_eps_to_pdf.sh');

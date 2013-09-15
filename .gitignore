@@ -5,7 +5,6 @@
 *.bbl
 *.blg
 *.dvi
-*.eps
 *.fls
 *.fdb_latexmk
 *.glg
