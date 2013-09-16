@@ -36,6 +36,9 @@ function mr_arfi_path_axes
             '(Anterior-to-Posterior : Apex-to-Base)',...
             '(Lateral-to-Lateral : Anterior-to-Posterior)'};
 
+    % create a file for writing the data for LaTeX table
+    fid = fopen('tab_axis_ratio_over_under_data.tex','w');
+
     for i=1:3,
         figure;
         hold on;
@@ -83,7 +86,7 @@ function mr_arfi_path_axes
         set(g(1),'FaceColor',[0 1 0]);
         ylabel('Axis Ratios','FontSize',fs)
         xlabel('Study Subject','FontSize',fs);
-        title(sprintf('Total Prostate Axes: %s',titles{i}),'FontSize',fs);
+        title(sprintf('Central Gland / Zone Axes: %s',titles{i}),'FontSize',fs);
         a=axis;
         a(2) = 17;
         axis(a);
@@ -108,7 +111,90 @@ function mr_arfi_path_axes
         close;
     end;
 
+    % now lets compute how much over/under estimation of axis ratios ARFI is compared to the MR (and PATH).
+    ARFI_MR_Total_OverUnder = compute_over_under(MR_total_ratios,ARFI_total_ratios);
+    ARFI_PATH_Total_OverUnder = compute_over_under(PATH_total_ratios,ARFI_total_ratios);
+    MR_PATH_Total_OverUnder = compute_over_under(PATH_total_ratios,MR_total_ratios);
+    ARFI_MR_Central_OverUnder = compute_over_under(MR_central_ratios,ARFI_central_ratios);
+
+    axis_combos = {'LL:AB','AP:AB','LL:AP'};
+    % another set of bar plots! 
+    for i=1:3,
+        figure;
+        hold on;
+        bar_width=0.25;
+        h=bar([1:length(ARFI_MR_Total_OverUnder(:,i))],ARFI_MR_Total_OverUnder(:,i),bar_width);
+        g=bar([1:length(ARFI_PATH_Total_OverUnder(:,i))]+bar_width,ARFI_PATH_Total_OverUnder(:,i),bar_width);
+        f=bar([1:length(MR_PATH_Total_OverUnder(:,i))]+2*bar_width,MR_PATH_Total_OverUnder(:,i),bar_width);
+        set(h(1),'FaceColor',[0 0 1]);
+        set(g(1),'FaceColor',[0 1 0]);
+        set(f(1),'FaceColor',[1 0 0]);
+        ylabel('Percent Axis Ratio Differences','FontSize',fs)
+        xlabel('Study Subject','FontSize',fs);
+        title(sprintf('Total Prostate Axes: %s',titles{i}),'FontSize',fs);
+        a=axis;
+        a(2) = 17;
+        axis(a);
+        legend('ARFI:MR (Blue)','ARFI:PATH (Green)','MR:PATH (Red)','Location','NorthEast');
+        legend boxoff;
+
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
+
+        print('-depsc2',sprintf('mr_arfi_total_over_under%i.eps',i));
+        close;
+
+        % while I'm here, lets compute some stats to include in the caption / text, and LaTeX format it!!
+        fprintf(fid,'ARFI & MR & Total & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Total_OverUnder(:,i)),std(ARFI_MR_Total_OverUnder(:,i)));
+        fprintf(fid,'ARFI & PATH & Total & %s & %.1f $\\pm$  %.1f \\\\ \n',axis_combos{i},mean(ARFI_PATH_Total_OverUnder(:,i)),std(ARFI_PATH_Total_OverUnder(:,i)));
+        fprintf(fid,'MR & PATH & Total & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(MR_PATH_Total_OverUnder(:,i)),std(MR_PATH_Total_OverUnder(:,i)));
+    end;
+
+    for i=1:3,
+        figure;
+        hold on;
+        bar_width=0.5;
+        h=bar([1:length(ARFI_MR_Central_OverUnder(:,i))],ARFI_MR_Central_OverUnder(:,i),bar_width);
+        set(h(1),'FaceColor',[0 0 1]);
+        ylabel('Percent Axis Ratio Differences','FontSize',fs)
+        xlabel('Study Subject','FontSize',fs);
+        title(sprintf('Central Gland / Zone Axes: %s',titles{i}),'FontSize',fs);
+        a=axis;
+        a(2) = 17;
+        axis(a);
+
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
+
+        print('-depsc2',sprintf('mr_arfi_central_over_under%i.eps',i));
+        close;
+        fprintf(fid,'ARFI & MR & Central & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Central_OverUnder(:,i)),std(ARFI_MR_Central_OverUnder(:,i)));
+    end;
+
 function [ratios]=compute_ratios(axes)
     ratios(:,1) = axes(:,2)./axes(:,1);
     ratios(:,2) = axes(:,3)./axes(:,1);
     ratios(:,3) = axes(:,3)./axes(:,2);
+
+function [over_under]=compute_over_under(mr,arfi)
+    over_under = 100*(arfi-mr)./mr;
