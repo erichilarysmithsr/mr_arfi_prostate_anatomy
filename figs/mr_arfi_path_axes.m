@@ -77,9 +77,16 @@ function mr_arfi_path_axes
 
         print('-depsc2',sprintf('%s.eps',axis_titles{i}));
         close;
+
+        % compute over/unders for each modality
+        mr_axis_OverUnder(:,i) = compute_over_under(PATH_total_axes(:,i),MR_total_axes(:,i)/10);
+        arfi_axis_OverUnder(:,i) = compute_over_under(PATH_total_axes(:,i),ARFI_total_axes(:,i)/10);
     end;
 
-
+    mean(mr_axis_OverUnder)
+    std(mr_axis_OverUnder)
+    mean(arfi_axis_OverUnder)
+    std(arfi_axis_OverUnder)
 
     % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
     % imaging central and total and path total volumes
@@ -88,8 +95,6 @@ function mr_arfi_path_axes
     ARFI_central_ratios = compute_ratios(ARFI_central_axes);
     ARFI_total_ratios = compute_ratios(ARFI_total_axes);
     PATH_total_ratios = compute_ratios(PATH_total_axes);
-
-
 
     % create a file for writing the data for LaTeX table
     fid = fopen('tab_axis_ratio_over_under_data.tex','w');
