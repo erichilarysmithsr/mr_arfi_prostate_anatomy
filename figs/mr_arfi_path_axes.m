@@ -21,6 +21,66 @@ function mr_arfi_path_axes
     ARFI_total_axes = [data(:,15:18)];
     PATH_total_axes = [data(:,19:21)];
 
+    titles={'(Lateral-to-Lateral : Apex-to-Base)',...
+            '(Anterior-to-Posterior : Apex-to-Base)',...
+            '(Lateral-to-Lateral : Anterior-to-Posterior)'};
+    axis_titles={'Apex-to-Base',...
+            'Lateral-to-Lateral',...
+            'Anterior-to-Posterior'};
+
+    % fontsize
+    fs = 18;
+
+    % lets plot some direct axis measurements of the total prostate and central gland
+    for i=1:3,
+        figure;
+        hold on;
+        plot(PATH_total_axes(:,i),MR_total_axes(:,i)/10,'bx','MarkerSize',14,'LineWidth',3);
+        plot(PATH_total_axes(:,i),ARFI_total_axes(:,i)/10,'go','MarkerSize',14,'LineWidth',3);
+        xlabel('Pathology Measurement (cm)','FontSize',fs);
+        ylabel('Imaging Measurement (cm)','FontSize',fs);
+
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
+
+         [mr_fit,mr_Rsq]=compute_linreg_Rsq(PATH_total_axes(:,i),MR_total_axes(:,i)/10);
+         plot(PATH_total_axes(:,i),mr_fit,'-b','LineWidth',3);
+         [arfi_fit,arfi_Rsq]=compute_linreg_Rsq(PATH_total_axes(:,i),ARFI_total_axes(:,i)/10);
+         plot(PATH_total_axes(:,i),arfi_fit,'-g','LineWidth',3);
+
+       axis([2 8 2 8]); 
+
+       title(sprintf('%s',axis_titles{i}),'FontSize',fs);
+
+       switch i
+       case 1
+           legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
+        case 2
+           legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','SouthEast');
+        case 3
+           legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
+       end;
+       legend boxoff;
+
+        % add "ideal" line
+        line([2 8],[2 8],'LineStyle','--','Color','k','LineWidth',3);
+
+        print('-depsc2',sprintf('%s.eps',axis_titles{i}));
+        close;
+    end;
+
+
+
     % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
     % imaging central and total and path total volumes
     MR_central_ratios = compute_ratios(MR_central_axes);
@@ -29,12 +89,7 @@ function mr_arfi_path_axes
     ARFI_total_ratios = compute_ratios(ARFI_total_axes);
     PATH_total_ratios = compute_ratios(PATH_total_axes);
 
-    % fontsize
-    fs = 18;
 
-    titles={'(Lateral-to-Lateral : Apex-to-Base)',...
-            '(Anterior-to-Posterior : Apex-to-Base)',...
-            '(Lateral-to-Lateral : Anterior-to-Posterior)'};
 
     % create a file for writing the data for LaTeX table
     fid = fopen('tab_axis_ratio_over_under_data.tex','w');
