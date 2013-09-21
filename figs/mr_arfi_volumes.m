@@ -65,7 +65,7 @@ close;
 % lets do a little more processing to figure out what is going on... first the
 % relative volume in ARFI relative to MR
 
-arfi_mr_vol_diff = ((arfi_total_vol./mr_total_vol) - 1)*100;
+arfi_mr_vol_diff = ((arfi_total_vol-mr_total_vol)./mr_total_vol)*100;
 figure;
 bar([1:length(MRdataStack)],arfi_mr_vol_diff,0.5);
 title('ARFI:MR Total Volume Comparison','FontSize',fs);
@@ -104,3 +104,21 @@ text(1,90,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_cz_total-mr_cg_total),st
 
 print('-depsc2','mr_arfi_central_total_diff.eps');
 close;
+
+% finally, lets just look at central glands % diffs
+arfi_mr_central_diff = ((arfi_cz_vol-mr_cg_vol)./mr_cg_vol)*100;
+figure;                            
+bar([1:length(MRdataStack)],arfi_mr_central_diff,0.5);
+title('ARFI:MR Central Gland Volume Comparison','FontSize',fs);
+xlabel('Study Subject','FontSize',fs);
+ylabel('Percent Difference','FontSize',fs);
+set(gca,'FontSize',fs);            
+a=axis;                            
+a(2) = 17;                         
+%a(3) = -5;                         
+%a(4) = 110;                        
+axis(a);
+text(0.5,70,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_central_diff),std(arfi_mr_central_diff)),'FontSize',fs);
+print('-depsc2','mr_arfi_central_diff.eps');
+close;
+
