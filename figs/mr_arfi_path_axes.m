@@ -88,6 +88,54 @@ function mr_arfi_path_axes
     mean(arfi_axis_OverUnder)
     std(arfi_axis_OverUnder)
 
+    % let's make plots of the correlation between MR:ARFI for total gland and central gland
+    for i=1:3,
+        figure;
+        hold on;
+        plot(MR_total_axes(:,i),ARFI_total_axes(:,i)/10,'kx','MarkerSize',14,'LineWidth',3);
+        plot(MR_central_axes(:,i),ARFI_central_axes(:,i)/10,'ro','MarkerSize',14,'LineWidth',3);
+        xlabel('MR Measurement (cm)','FontSize',fs);
+        ylabel('ARFI Measurement (cm)','FontSize',fs);
+
+        set(gca, ...
+            'Box'         , 'off'     , ...
+            'TickDir'     , 'out'     , ...
+            'TickLength'  , [.01 .01] , ...
+            'XMinorTick'  , 'off'      , ...
+            'YMinorTick'  , 'off'      , ...
+            'XGrid'       , 'off'      , ...
+            'XColor'      , [0 0 0], ...
+            'YColor'      , [0 0 0], ...
+            'XMinorGrid'  , 'off'      , ...
+            'LineWidth'   , 2, ...
+            'FontSize'    , fs);
+
+         [image_total_fit,image_total_Rsq]=compute_linreg_Rsq(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10);
+         plot(MR_total_axes(:,i),image_total_fit,'-k','LineWidth',3);
+         [image_central_fit,image_central_Rsq]=compute_linreg_Rsq(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
+         plot(MR_central_axes(:,i),image_central_fit,'-r','LineWidth',3);
+
+       axis([2 8 2 8]); 
+
+       title(sprintf('%s',axis_titles{i}),'FontSize',fs);
+
+       switch i
+       case 1
+           legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+        case 2
+           legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+        case 3
+           legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+       end;
+       legend boxoff;
+
+        % add "ideal" line
+        line([2 8],[2 8],'LineStyle','--','Color','k','LineWidth',3);
+
+        print('-depsc2',sprintf('Imaging_%s.eps',axis_titles{i}));
+        close;
+    end;
+
     % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
     % imaging central and total and path total volumes
     MR_central_ratios = compute_ratios(MR_central_axes);
