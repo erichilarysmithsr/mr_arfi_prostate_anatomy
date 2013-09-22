@@ -1,11 +1,10 @@
 \subsection{Image Zonal Anatomy Segmentation and 3D Model Rendering}
-Axial T2W MR slices were manually segmented using the polygon tool on
-ITK-SNAP~\cite{Yushkevich2006} using separate labels for the peripheral zone
-(PZ), central gland (CG) and anterior fibromuscular stroma (AFS). The gland was
-segmented from base to apex.  The base was identified below the bladder and
-subsequent images were segmented until the last slice with visible prostatic
-tissue was identified caudally. The CG, PZ and AFS were segmented independently
-according to their well-established anatomical characteristics on
+Axial MR T2WI images were manually segmented using the smooth polygon tool in
+ITK-SNAP~\cite{Yushkevich2006}, using unique labels for the PZ, CG and AFS. The
+gland was segmented from base to apex.  The base was identified below the
+bladder, and subsequent images were segmented until the last slice with visible
+prostatic tissue was identified caudally. The CG, PZ and AFS were segmented
+independently according to their well-established anatomical characteristics on
 T2WI.~\cite{Verma2011,Jung2012,Poon1985,Hricak2007,Bonekamp2011} The PZ was
 identified by its homogenous high signal intensity on T2WI, which is usually
 similar to that of the nearby periprostatic fat. The CG was visualized and
@@ -13,13 +12,14 @@ delineated based on its heterogeneous and lower signal intensity as well as its
 location. Although not readily visible on every case, the AFS was identified by
 its low T2 signal intensity and its location anterior to the central gland. 
 
-ARFI images were segmented using a similar procedure to the MR images, using
-XXXX (INSERT CRITERIA HERE).  
+ARFI images were segmented using a similar procedure to the MR images.
 
-Segmented image stacks were imported into 3D Slicer (v4.3.0, CITATION) and 3D
-models were rendered using the following parameters (Table~\ref{tab:3dslicer}:
+\emph{CO-AUTHOR QUESTION: CAN WE EASILY DELINEATE OUR SEGMENTATION CRITERIA?}
 
-\begin{table}[htb!]
+Segmented image stacks were imported into 3D Slicer (v4.3.0) and 3D
+models were rendered using the following parameters (Table~\ref{tab:3dslicer}):
+
+\begin{table}[h!]
 \centering
 \caption{3D model volume rendering parameters}
 \begin{tabular}{ll}
@@ -30,3 +30,9 @@ Smoothing  & 70.0 \\
 Joint Smoothing & Enabled \\
 \end{tabular}
 \end{table}
+
+The 3D slicer models were used to render volume estimates of the PZ and CG,
+with the sum of PZ and CG representing the total prostate gland volume.  AFS
+volume estimates in select MR cases were included in the total prostate gland
+volume estimates.  Orthogonal tri-axial measurements in the lateral-to-lateral,
+axex-to-base, and anterior-to-posterior dimensions were made in 3D slicer.
