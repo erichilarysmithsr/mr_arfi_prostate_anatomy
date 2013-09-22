@@ -36,13 +36,13 @@ set(h(1),'FaceColor',[0 0 1]);
 set(h(2),'FaceColor',[1 0 0]);
 set(g(1),'FaceColor',[0 1 0]);
 set(g(2),'FaceColor',[1 1 0]);
-ylabel('Zone Volumes (cm^3)','FontSize',fs)
+ylabel('Gland/Zone Volumes (cm^3)','FontSize',fs)
 xlabel('Study Subject','FontSize',fs);
-title('MR (Red/Blue) and ARFI (Yellow/Green) Zone Volumes','FontSize',fs);
+title('MR (Red/Blue) and ARFI (Yellow/Green) Volumes','FontSize',fs);
 a=axis;
 a(2) = 17;
 axis(a);
-legend('Central Gland','Peripheral Zone','Location','NorthWest');
+legend('CG','PZ','Location','NorthWest');
 legend boxoff;
 %set(gca,'XTickLabel',Pcell)
 
@@ -117,7 +117,7 @@ figure;
     hold on
     plot(mr_total_vol/1e3,arfi_total_vol/1e3,'kx','MarkerSize',14,'LineWidth',3);
     plot(mr_total_vol/1e3,mr_arfi_total_fit,'-k','LineWidth',3);
-    title('ARFI:MR Total Gland Volume','FontSize',fs);
+    title('ARFI:MR Volumes','FontSize',fs);
     xlabel('MR Volume (cm^3)','FontSize',fs);
     ylabel('ARFI Volume (cm^3)','FontSize',fs);
     set(gca,'FontSize',fs);            
