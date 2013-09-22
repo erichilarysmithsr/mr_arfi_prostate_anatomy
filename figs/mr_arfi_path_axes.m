@@ -92,8 +92,8 @@ function mr_arfi_path_axes
     for i=1:3,
         figure;
         hold on;
-        plot(MR_total_axes(:,i),ARFI_total_axes(:,i)/10,'kx','MarkerSize',14,'LineWidth',3);
-        plot(MR_central_axes(:,i),ARFI_central_axes(:,i)/10,'ro','MarkerSize',14,'LineWidth',3);
+        plot(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10,'kx','MarkerSize',14,'LineWidth',3);
+        plot(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10,'ro','MarkerSize',14,'LineWidth',3);
         xlabel('MR Measurement (cm)','FontSize',fs);
         ylabel('ARFI Measurement (cm)','FontSize',fs);
 
@@ -111,19 +111,19 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
          [image_total_fit,image_total_Rsq]=compute_linreg_Rsq(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10);
-         plot(MR_total_axes(:,i),image_total_fit,'-k','LineWidth',3);
+         plot(MR_total_axes(:,i)/10,image_total_fit,'-k','LineWidth',3);
          [image_central_fit,image_central_Rsq]=compute_linreg_Rsq(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
-         plot(MR_central_axes(:,i),image_central_fit,'-r','LineWidth',3);
+         plot(MR_central_axes(:,i)/10,image_central_fit,'-r','LineWidth',3);
 
        axis([2 8 2 8]); 
 
-       title(sprintf('%s',axis_titles{i}),'FontSize',fs);
+       title(sprintf('%s Axis',axis_titles{i}),'FontSize',fs);
 
        switch i
        case 1
            legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
         case 2
-           legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+           legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','SouthEast');
         case 3
            legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
        end;
