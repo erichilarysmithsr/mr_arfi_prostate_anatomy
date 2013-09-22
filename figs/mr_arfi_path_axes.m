@@ -92,8 +92,8 @@ function mr_arfi_path_axes
     for i=1:3,
         figure;
         hold on;
-        plot(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10,'kx','MarkerSize',14,'LineWidth',3);
-        plot(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10,'ro','MarkerSize',14,'LineWidth',3);
+        plot(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10,'rx','MarkerSize',14,'LineWidth',3);
+        plot(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10,'bo','MarkerSize',14,'LineWidth',3);
         xlabel('MR Measurement (cm)','FontSize',fs);
         ylabel('ARFI Measurement (cm)','FontSize',fs);
 
@@ -111,9 +111,9 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
          [image_total_fit,image_total_Rsq]=compute_linreg_Rsq(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10);
-         plot(MR_total_axes(:,i)/10,image_total_fit,'-k','LineWidth',3);
+         plot(MR_total_axes(:,i)/10,image_total_fit,'-r','LineWidth',3);
          [image_central_fit,image_central_Rsq]=compute_linreg_Rsq(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
-         plot(MR_central_axes(:,i)/10,image_central_fit,'-r','LineWidth',3);
+         plot(MR_central_axes(:,i)/10,image_central_fit,'-b','LineWidth',3);
 
        axis([2 8 2 8]); 
 
