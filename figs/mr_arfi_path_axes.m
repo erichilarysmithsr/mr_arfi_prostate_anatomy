@@ -134,7 +134,17 @@ function mr_arfi_path_axes
 
         print('-depsc2',sprintf('Imaging_%s.eps',axis_titles{i}));
         close;
+
+        % compute over/unders for each modality
+        mr_arfi_total_OverUnder(:,i) = compute_over_under(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10);
+        mr_arfi_central_OverUnder(:,i) = compute_over_under(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
     end;
+
+    disp('MR:ARFI Total and Central');
+    mean(mr_arfi_total_OverUnder)
+    std(mr_arfi_total_OverUnder)
+    mean(mr_arfi_central_OverUnder)
+    std(mr_arfi_central_OverUnder)
 
     % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
     % imaging central and total and path total volumes
