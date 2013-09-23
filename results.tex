@@ -1,9 +1,5 @@
 \section{Results}\label{sect:results}
 
-\begin{itemize}
-    \item Images of select cases, demonstrating segmentation process
-\end{itemize}
-
 Figure~\ref{fig:mr_anatomy} shows the anatomic zones and some anatomic
 orientation labels in the prostate of a representative study subject.  The
 zonal anatomy of the prostate was manually segmented
@@ -15,15 +11,16 @@ models of the zonal anatomy volumes were rendered
 
 \input{fig_mr_segs_vol}
 
-The computed volumes of the prostates from the MR and ARFI imaging data are
-presented in Table~\ref{tab:mr_arfi_volumes}.  The subvolumes associated with
-the zonal anatomy in each imaging modality was measured
-(Figure~\ref{fig:mr_arfi_volumes}(a)), showing an mean overestimation of total
-prostate volume of 36.7 $\pm$ 27.9\% by ARFI imaging compared to MR volumes
-(Figure~\ref{fig:mr_arfi_volumes}(b)), and central gland volumes differed
-between ARFI and MR images by 2.1 $\pm$ 39.1\%
-(Figure~\ref{fig:mr_arfi_volumes}(c)).
-
+The subvolumes associated with the zonal anatomy in each imaging modality were
+measured (Figure~\ref{fig:mr_arfi_volumes}(a)), with moderate correlation
+between the ARFI and MR total prostate gland volumes (R$^2$ = 0.68), with a
+mean overestimation of of 36.7 $\pm$ 27.9\% by ARFI imaging compared to MR
+volumes (Figure~\ref{fig:mr_arfi_volumes}(b)).  Central gland volumes were
+slightly less correlated between ARFI and MR images (R$^2$ = 0.41) with no
+significant mean over/under-estimation (2.1 $\pm$ 39.1\%), but significant
+variability between the cases (Figure~\ref{fig:mr_arfi_volumes}(c)).
+Table~\ref{tab:mr_arfi_volumes} has the individually-measured volumes for MR
+and ARFI imaging for each study subject.
 
 \input{fig_mr_arfi_volumes}
 
@@ -31,32 +28,37 @@ Weights and axis measurements from the gross pathology processing of the
 excised prostates were collected (Table~\ref{tab:path_data}), and using the
 axis measurements (lateral-to-lateral, anterior-to-posterior, and
 apex-to-base), the prostate volume was approximated as a tri-axial ellipsoid,
-and its volume was estimated.
-
-MR and ARFI imaging total prostate volumes were also compared with the weights
-and prostate volumes, approximated to be tri-axial ellipsoids, and calculated
-from measurements of the prostate semi-principal axes.  Prostate weights were
-moderately correlated with estimated pathology ellipsoidal prostate volumes
-(Figure~\ref{fig:mr_arfi_weight}(a), R$^2$ = 0.68).  There was moderate
+and its volume was estimated (\ref{eqn:ellipsoid_volume}).  Prostate weights
+were moderately correlated with estimated pathology ellipsoidal prostate
+volumes (Figure~\ref{fig:mr_arfi_weight}(a), R$^2$ = 0.68).  There was moderate
 correlation between the prostate weight and the image-reconstructed prostate
 volumes (Figure~\ref{fig:mr_arfi_weight}(b), R$^2$ = 0.44 (MR) and 0.21
 (ARFI)), though there was weaker correlation with the ellipsoidal approximation
-of the measurement prostate volume and the image-recontructed volumens
-(Figure~\ref{fig:mr_arfi_weight}(c), R$^2$ = 0.08 (MR) and 0.01 (ARFI)).  
+of the measurement prostate volume and the image-reconstructed volumes
+(Figure~\ref{fig:mr_arfi_weight}(c), R$^2$ = 0.08 (MR) and 0.01 (ARFI)).  Study
+subject \#4 had a very large prostate, which could not be completely captured
+in MR or ARFI imaging in the anterior region, so the same analyses were
+performed with that study subject excluded
+(Figure~\ref{fig:mr_arfi_weight}(d-e)), improving correlations for MR and ARFI
+to the prostate weights (R$^2$ = 0.74 and 0.60, respectively), and prostate
+volumes (R$^2$ = 0.39 for both imaging modalities).
 
 \input{fig_mr_arfi_weight}
 
-Measurements of the prostate dimensions along the three standard anatomic axes
-(apex-to-base, lateral-to-lateral, and anterior-to-posterior) were made
-(Table~\ref{tab:mr_arfi_axes}), and the correlation between the imaging axis
-measurements and pathology was performed (Figure~\ref{fig:mr_arfi_path_axes}).
-To evaluate the relative shape of the prostate in each imaging modality, the
-relative ratios of the axes in imaging and pathology for the total prostate
-volume were compared (Figure~\ref{fig:mr_arfi_total_axes}), and the relative
-ratios of the central gland / zone anatomy were compared for MR and ARFI
-imaging (Figure~\ref{fig:mr_arfi_central_axes}).  The mean ratio differences
-between ARFI imaging, T2WI MR and pathology are compiled in
-Table~\ref{tab:axis_ratio_over_under}.
+Measurements of the prostate total and central gland dimensions along the three
+standard anatomic axes (apex-to-base, lateral-to-lateral, and
+anterior-to-posterior) were made (Table~\ref{tab:mr_arfi_axes}), and the
+correlation between the imaging axis measurements was analyzed
+(Figure~\ref{fig:mr_arfi_path_axes}).  ARFI was most correlated to MR in the
+lateral-to-lateral axis in both the total and central glands (R$^2$ = 0.47 and
+0.44, respectively), with mean overestimates of 8.1 $\pm$ 18.4\% and 0.06 $\pm$
+17.2\%, respectively (Table~\ref{tab:mr_arfi_axes_error}).  ARFI had very good
+correlation with the total prostate gland axis in the anterior-to-posterior
+dimension (R$^2$ = 0.58), but poor correlation in the central gland (R$^2$ =
+0.00), with overestimates of 17.0 $\pm$ 12.1 and 14.8 $\pm$ 23.1\%.  ARFI
+imaging had weak correlation with MR images in the apex-to-base dimension
+(R$^2$ = 0.15, total gland and R$^2$ = 0.20, central gland), with differences
+of 0.58 $\pm$ 12.9 and -10.8 $\pm$ 22.3\%, respectively.
 
 \input{fig_mr_arfi_path_axes}
 
