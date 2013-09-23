@@ -13,6 +13,17 @@ location (Figure~\ref{fig:mr_anatomy}). Although not readily visible on every
 case, the AFS was identified by its low T2 signal intensity and its location
 anterior to the central gland. 
 
+Figure~\ref{fig:mr_anatomy} shows the anatomic zones and some anatomic
+orientation labels in the prostate of a representative study subject MR T2WI.  The
+zonal anatomy of the prostate was manually segmented
+(Figure~\ref{fig:mr_segs_vol}, bottom left) across the image stack, and 3D
+models of the zonal anatomy volumes were rendered
+(Figure~\ref{fig:mr_segs_vol}, top).
+
+\input{fig_mr_anatomy}
+
+\input{fig_mr_segs_vol}
+
 ARFI images were segmented using a similar procedure to the MR images.  B-mode
 images were used to segment the prostate capsules since contrast between the
 peripheral zone and the periprostatic fat can be low, and poor displacement SNR
@@ -20,7 +31,7 @@ can be present along the anterior aspect of the prostate in ARFI images, making
 it difficult to delineate that boundary.  The central gland was segmented as a
 stiffer region, relative to the peripheral zone, in the center of the prostate.
 
-\emph{CO-AUTHOR QUESTION: CAN WE EASILY DELINEATE OUR SEGMENTATION CRITERIA?}
+\input{fig_arfi_segs}
 
 Segmented image stacks were imported into 3D Slicer (v4.3.0) and 3D
 models were rendered using the following parameters (Table~\ref{tab:3dslicer}):
