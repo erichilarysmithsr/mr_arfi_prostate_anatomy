@@ -7,7 +7,7 @@ function mr_arfi_path_axes
     % mlp6@duke.edu
     % 2013-09-14
 
-    data = csvread('../data/Prostate_CZ_PZ_Volume_Axis_Measurements.csv');
+    data = csvread('../data/data.csv');
 
     Pnum = num2cell(data(:,1));
 

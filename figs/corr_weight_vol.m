@@ -8,7 +8,7 @@ function corr_weight_vol()
     % mlp6@duke.edu
     % 2013-09-13
 
-    vols = csvread('../data/Prostate_CZ_PZ_Volume_Axis_Measurements.csv');
+    vols = csvread('../data/data.csv');
 
     Pnum = num2cell(vols(:,1));
     mr_total_vol = vols(:,3);
