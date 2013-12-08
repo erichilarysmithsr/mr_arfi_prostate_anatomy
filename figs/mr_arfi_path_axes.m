@@ -31,6 +31,10 @@ function mr_arfi_path_axes
     % fontsize
     fs = 18;
 
+    % open up the table of axis errors for LaTeX
+    latex_fid = fopen('../tab_mr_arfi_axes_error.tex','w');
+    print_tab_mr_arfi_axes_error_tex_header(latex_fid);
+
     % lets plot some direct axis measurements of the total prostate and central gland
     for i=1:3,
         figure;
@@ -83,10 +87,10 @@ function mr_arfi_path_axes
         arfi_axis_OverUnder(:,i) = compute_over_under(PATH_total_axes(:,i),ARFI_total_axes(:,i)/10);
     end;
 
-    mean(mr_axis_OverUnder)
-    std(mr_axis_OverUnder)
-    mean(arfi_axis_OverUnder)
-    std(arfi_axis_OverUnder)
+    %mean(mr_axis_OverUnder)
+    %std(mr_axis_OverUnder)
+    %mean(arfi_axis_OverUnder)
+    %std(arfi_axis_OverUnder)
 
     % let's make plots of the correlation between MR:ARFI for total gland and central gland
     for i=1:3,
@@ -140,11 +144,12 @@ function mr_arfi_path_axes
         mr_arfi_central_OverUnder(:,i) = compute_over_under(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
     end;
 
-    disp('MR:ARFI Total and Central');
-    mean(mr_arfi_total_OverUnder)
-    std(mr_arfi_total_OverUnder)
-    mean(mr_arfi_central_OverUnder)
-    std(mr_arfi_central_OverUnder)
+    %disp('MR:ARFI Total and Central');
+    %mean(mr_arfi_total_OverUnder)
+    %std(mr_arfi_total_OverUnder)
+    %mean(mr_arfi_central_OverUnder)
+    %std(mr_arfi_central_OverUnder)
+    print_tab_mr_arfi_axes_error_tex_data(latex_fid,mr_arfi_total_OverUnder,mr_arfi_central_OverUnder);
 
     % I will now compute ratios of AB:LL (1:2), AB:AP (1:3), and LL:AP (2:3) for
     % imaging central and total and path total volumes
@@ -309,10 +314,50 @@ function mr_arfi_path_axes
         fprintf(fid,'ARFI & MR & Central & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Central_OverUnder(:,i)),std(ARFI_MR_Central_OverUnder(:,i)));
     end;
 
+    % print LaTeX axis error footer and close file
+    print_tab_mr_arfi_axes_error_tex_footer(latex_fid);
+    fclose(latex_fid)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [ratios]=compute_ratios(axes)
     ratios(:,1) = axes(:,2)./axes(:,1);
     ratios(:,2) = axes(:,3)./axes(:,1);
     ratios(:,3) = axes(:,3)./axes(:,2);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [over_under]=compute_over_under(mr,arfi)
     over_under = 100*(arfi-mr)./mr;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function print_tab_mr_arfi_axes_error_tex_header(fid)
+    fprintf(fid,'\\begin{table}[h!]\n');
+    fprintf(fid,'\\centering\n');
+    fprintf(fid,'\\caption{Difference in ARFI imaging axis measurements relative to MR T2WI measurements.}\n');
+    fprintf(fid,'\\begin{tabular}{|l|l|l|} \\hline\n');
+    fprintf(fid,' & {\\bf ARFI:MR} & {\\bf ARFI:MR} \\\\ \n');
+    fprintf(fid,' & {\\bf Total Gland (\\%%)} & {\\bf Central Gland (\\%%)} \\\\ \\hline \n');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function print_tab_mr_arfi_axes_error_tex_footer(fid)
+    fprintf(fid,'\\hline\n');
+    fprintf(fid,'\\end{tabular}\n');
+    fprintf(fid,'\\label{tab:mr_arfi_axes_error}\n');
+    fprintf(fid,'\\end{table}\n');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function print_tab_mr_arfi_axes_error_tex_data(fid,total,central)
+    total_means = mean(total);
+    total_stds = std(total);
+    central_means = mean(central);
+    central_stds = std(central);
+    fprintf(fid,'{\\bf Lateral-to-Lateral} & %.1f $\\pm$ %.1f & %.1f $\\pm$ %.1f \\\\ \n',total_means(2),total_stds(2),central_means(2),central_stds(2))
+    fprintf(fid,'{\\bf Anterior-to-Posterior} & %.1f $\\pm$ %1.f & %.1f $\\pm$ %.1f \\\\ \n',total_means(3),total_stds(3),central_means(3),central_stds(3))
+    fprintf(fid,'{\\bf Apex-to-Base} & %.1f $\\pm$ %.1f & %.1f $\\pm$ %.1f \\\\ \n',total_means(1),total_stds(1),central_means(1),central_stds(1));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
