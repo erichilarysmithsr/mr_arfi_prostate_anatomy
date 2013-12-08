@@ -35,6 +35,9 @@ function mr_arfi_path_axes
     latex_fid = fopen('../tab_mr_arfi_axes_error.tex','w');
     print_tab_mr_arfi_axes_error_tex_header(latex_fid);
 
+    % open up Rsq file for writing
+    rsq_fid = fopen('../data/mr_arfi_axes_Rsq.tex','w');
+
     % lets plot some direct axis measurements of the total prostate and central gland
     for i=1:3,
         figure;
@@ -87,11 +90,6 @@ function mr_arfi_path_axes
         arfi_axis_OverUnder(:,i) = compute_over_under(PATH_total_axes(:,i),ARFI_total_axes(:,i)/10);
     end;
 
-    %mean(mr_axis_OverUnder)
-    %std(mr_axis_OverUnder)
-    %mean(arfi_axis_OverUnder)
-    %std(arfi_axis_OverUnder)
-
     % let's make plots of the correlation between MR:ARFI for total gland and central gland
     for i=1:3,
         figure;
@@ -123,13 +121,20 @@ function mr_arfi_path_axes
 
        title(sprintf('%s Axis',axis_titles{i}),'FontSize',fs);
 
+       % print legends and Rsq data for inclusion in LaTeX doc
        switch i
        case 1
            legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+           fprintf(rsq_fid,'\\newcommand{\\totalApexBaseRsq}{%.2f}\n',image_total_Rsq);
+           fprintf(rsq_fid,'\\newcommand{\\centralApexBaseRsq}{%.2f}\n',image_central_Rsq);
         case 2
            legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','SouthEast');
+           fprintf(rsq_fid,'\\newcommand{\\totalLatLatRsq}{%.2f}\n',image_total_Rsq);
+           fprintf(rsq_fid,'\\newcommand{\\centralLatLatRsq}{%.2f}\n',image_central_Rsq);
         case 3
            legend(sprintf('Total Gland (R^2 = %.2f)',image_total_Rsq),sprintf('Central Gland (R^2 = %.2f)',image_central_Rsq),'Location','NorthWest');
+           fprintf(rsq_fid,'\\newcommand{\\totalAntPostRsq}{%.2f}\n',image_total_Rsq);
+           fprintf(rsq_fid,'\\newcommand{\\centralAntPostRsq}{%.2f}\n',image_central_Rsq);
        end;
        legend boxoff;
 
@@ -143,6 +148,8 @@ function mr_arfi_path_axes
         mr_arfi_total_OverUnder(:,i) = compute_over_under(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10);
         mr_arfi_central_OverUnder(:,i) = compute_over_under(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10);
     end;
+
+    fclose(rsq_fid);
 
     %disp('MR:ARFI Total and Central');
     %mean(mr_arfi_total_OverUnder)
