@@ -1,19 +1,23 @@
 \begin{figure}[htb!]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=1.0\textwidth]{figs/Bmode_CapsuleSegs.eps} \\
-\includegraphics[width=1.0\textwidth]{figs/ARFI_CGsegs.eps} \\
+%\includegraphics[width=1.0\textwidth]{figs/Bmode_CapsuleSegs.eps} \\
+%\includegraphics[width=1.0\textwidth]{figs/ARFI_CGsegs.eps} \\
+\includegraphics[width=0.8\textwidth]{zach/us_capsule_seg_model.png} \\
+\includegraphics[width=0.8\textwidth]{zach/arfi_central_seg.png} \\
+\includegraphics[width=0.8\textwidth]{zach/us_central_seg_model.png} \\
 \end{tabular}
-\caption{Representative B-mode (top row) and ARFI images (bottom row), with
-    superimposed segmentation outlines of the capsule and CG, respectively, for
-    the same study subject shown in Figure~\ref{fig:mr_segs_vol}.  The B-mode
-    images were segmented in the axial view, using the hypoechoic border of the
-    capsule.  Notice that for large prostates, like the one shown in this
-    figure, that the edges of the organ were not always captured in the imaging
-    field-of-view.  The CG in the ARFI images was typically segmented using the
-    coronal view, which, especially in the presence of extensive BPH, can have
-    a very characteristic, heterogeneous appearance.  It should be noted that
-    the coronal views in these ultrasound images are flipped 180\degree relative
-    to the same images in Figure~\ref{fig:mr_segs_vol}.}
+\caption{TOP ROW: B-mode capsule segmentation using all three orthogonal
+    planes.  The primary segmentation plane is sagittal (second pane), however
+    the axial (first pane) and coronal (third pane) are used to guide this
+    segmentation because as the label map is built up, the intersections of
+    the label map in the axial and sagittal planes can be viewed as well. The
+    block-like character of the axial/coronal sections of the label map are a
+    direct result of downsampling.  MIDDLE ROW: ARFI central gland segmentation
+    (blue) with the capsule model (pink) overlaid for guidance during
+    segmentation.  BOTTOM ROW: Demonstrates the modeled capsule with slice
+    intersections on the axial, sagittal, and coronal planes respectively (all
+    pink). This model was built up from the label map created in the B-mode
+    capsule segmentation.}
 \label{fig:arfi_segs} 
 \end{figure}
