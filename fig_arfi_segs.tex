@@ -1,23 +1,31 @@
 \begin{figure}[htb!]
 \centering
-\begin{tabular}{c}
-%\includegraphics[width=1.0\textwidth]{figs/Bmode_CapsuleSegs.eps} \\
-%\includegraphics[width=1.0\textwidth]{figs/ARFI_CGsegs.eps} \\
-\includegraphics[width=0.8\textwidth]{zach/us_capsule_seg_model.png} \\
-\includegraphics[width=0.8\textwidth]{zach/arfi_central_seg.png} \\
-\includegraphics[width=0.8\textwidth]{zach/us_central_seg_model.png} \\
+\includegraphics[width=0.3\textwidth]{zach/Cap_Modeling_Images/3D_Capsule.png} \\
+Prostate Capsule \\
+\begin{tabular}{ccc}
+\includegraphics[width=0.3\textwidth]{zach/Cap_Modeling_Images/Axial_Cap.png} &
+\includegraphics[width=0.3\textwidth]{zach/Cap_Modeling_Images/Coronal_Cap.png} &
+\includegraphics[width=0.3\textwidth]{zach/Cap_Modeling_Images/Sagittal_Cap.png} \\
+Axial B-mode Outline & Coronal B-mode Outline & Sagital B-mode Outline \\
 \end{tabular}
-\caption{TOP ROW: B-mode capsule segmentation using all three orthogonal
-    planes.  The primary segmentation plane is sagittal (second pane), however
-    the axial (first pane) and coronal (third pane) are used to guide this
-    segmentation because as the label map is built up, the intersections of
-    the label map in the axial and sagittal planes can be viewed as well. The
-    block-like character of the axial/coronal sections of the label map are a
-    direct result of downsampling.  MIDDLE ROW: ARFI central gland segmentation
-    (blue) with the capsule model (pink) overlaid for guidance during
-    segmentation.  BOTTOM ROW: Demonstrates the modeled capsule with slice
-    intersections on the axial, sagittal, and coronal planes respectively (all
-    pink). This model was built up from the label map created in the B-mode
-    capsule segmentation.}
+\includegraphics[width=0.3\textwidth]{zach/CG_Modeling_Images/3D_CG.png} \\
+Prostate Central Gland \\
+\begin{tabular}{ccc}
+\includegraphics[width=0.3\textwidth]{zach/CG_Modeling_Images/Axial_CG.png} &
+\includegraphics[width=0.3\textwidth]{zach/CG_Modeling_Images/Coronal_CG.png} &
+\includegraphics[width=0.3\textwidth]{zach/CG_Modeling_Images/Sagittal_CG.png} \\
+Axial ARFI Outline & Coronal ARFI Outline & Sagital ARFI Outline \\
+\end{tabular}
+\caption{TOP ROWS: Prostate capsule 3D model (magenta) rendered from manual
+    segmentation of the B-mode images, with the 3D model outlines superimposed
+    on the central axial, coronal and sagital B-mode images.  The primary
+    segmentation plane was sagittal; however the axial and coronal planes were
+    used to guide the segmentation to insure 3D continuity of the capsule
+    structure.  BOTTOM ROWS: Prostate central gland 3D model (blue) rendered
+    from manual segmentation of the ARFI images, with the 3D model outlines
+    superimposed on the central axial, coronal and sagital ARFI images.  The
+    coronal ARFI imaging plane was the primary orientation used for image
+    segmentation, but like the capsule, the orthogonal planes were used to
+    insure continuity of the central gland in all three dimensions.}
 \label{fig:arfi_segs} 
 \end{figure}
