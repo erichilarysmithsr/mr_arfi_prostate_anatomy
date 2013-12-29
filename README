@@ -1,0 +1,7 @@
+Acoustic Radiation Force Impulse (ARFI) Prostate Zonal Anatomy: Comparison with
+Endorectal T2-Weighted MR Imaging (T2WI)
+
+This manuscript utilizes the IEEEtran.cls for LaTeX that is assumed to be
+available for compilation.
+
+compile-n-view.sh can be run to get realtime LaTeX rendering, if you have latexmk installed; otherwise, pdflatex can be used (cannot use latex directly since jpb/png images are being included directly)
