@@ -4,17 +4,18 @@ Axial MR T2WI images were manually segmented using the smooth polygon tool in
 ITK-SNAP~\cite{Yushkevich2006}, using unique labels for the PZ, CG and AFS. The
 gland was segmented from base to apex.  The base was identified below the
 bladder, and subsequent images were segmented until the last slice with visible
-prostatic tissue was identified caudally. The CG and urethra, PZ and AFS were
+prostatic tissue was identified caudally. The CG, urethra, PZ and AFS were
 segmented independently according to their well-established anatomical
 characteristics on
 T2WI.~\cite{Barentsz2012,Jung2012,Poon1985,Hricak2007,Bonekamp2011} The PZ was
-identified by its homogenous high signal intensity on T2WI, which is usually
+identified by its homogeneous high signal intensity on T2WI, which is usually
 similar to that of the nearby periprostatic fat. The CG was visualized and
-delineated based on its heterogeneous and lower signal intensity as well as its
-location (Figure~\ref{fig:mr_anatomy}). The urethra was included in the CG
-segmentation. Although not readily visible on every case, the AFS was
-identified by its low T2 signal intensity and its location anterior to the
-central gland. 
+delineated based on its heterogeneous, lower signal intensity and its location
+(Figure~\ref{fig:mr_anatomy}). The urethra was included in the CG segmentation.
+When visible, the AFS was identified by its low T2 signal intensity and its
+location anterior to the CG. 
+
+\input{fig_mr_anatomy}
 
 Segmented image stacks were imported into 3D Slicer (v4.3.0) and 3D
 models were rendered using the following parameters (Table~\ref{tab:3dslicer}):
@@ -40,6 +41,8 @@ apex-to-base, and anterior-to-posterior dimensions were made in slicer by
 placing an ROI cube in the model's center and expanding the ROI cube to fit the
 maximal model dimensions (Figure~\ref{fig:roi_tool}). 
 
+\input{fig_roi_tool}
+
 Figure~\ref{fig:mr_anatomy} shows the anatomic zones and some anatomic
 orientation labels in the prostate of a representative study subject MR T2WI.
 The zonal anatomy of the prostate was manually segmented
@@ -47,49 +50,33 @@ The zonal anatomy of the prostate was manually segmented
 models of the zonal anatomy volumes were rendered
 (Figure~\ref{fig:mr_segs_vol}, top).
 
-\input{fig_mr_anatomy}
-
 \input{fig_mr_segs_vol}
 
 \subsubsection{Ultrasound Image Segmentation and Modeling}
 Sagittal B-mode and ARFI ultrasound image stacks were segmented in 3D Slicer
-using the \verb+draweffect+ tool to model and measure the prostate capsule and CG
-volume and tri-axial dimensions.  The sagittal imaging plane was chosen for
+using the \verb+draweffect+ tool to model and measure the prostate capsule and
+CG volume and tri-axial dimensions.  The sagittal imaging plane was chosen for
 segmentation because it has a greater number of easily identifiable anatomical
 structures:  seminal vesicles in the left and right posterior base, urethra in
 the mid apex, surrounding fibromuscular tissue in the anterior , and rectum in
 the posterior  than either the axial or coronal views. Prostate capsule was
 segmented in B-mode as this modality offers both high contrast between
 prostatic tissue and surrounding periprostatic fat, and better SNR in the
-anterior capsule region than ARFI images. ARFI was used to segment central gland as
-there is clear delineation in this modality between central gland and
-peripheral zone. This delineation is a result of the greater density of
-connective tissue within the central gland versus the peripheral zone meaning
-the central gland is stiffer than the surrounding peripheral zone.  Prior to
-segmentation, both the B-mode and ARFI image stacks were downsampled along the
-sagittal axis by a factor of 20 (i.e., from 360 slices per image stack to 18
-slices per image stack). This was done because segmenting 360 slices per image
-is inordinately time intensive, and does not improve the quality of the 3D
-rendered model any more than segmenting the more reasonable 18 slices per image
-stack. The parameters used for the resample scalar volume tool are shown below:
+anterior capsule region than ARFI images. ARFI images were used for CG
+segmentation.  Prior to segmentation, both the B-mode and ARFI image stacks
+were down-sampled along the sagittal axis by a factor of 20 (i.e., from 360
+slices per image stack to 18 slices per image stack) to reduce the number of
+manually-segmented frames. 
 
-ZACH - WHAT GOES HERE?
-
-Although, segmentations were performed along the sagittal plane, label map
+While segmentations were performed along the sagittal plane, label map
 intersections in the axial and coronal views were used during active creation
-of the sagittal segmentation to further improve segmentation accuracy.  This
-was done by using the resampled image stack, B-mode for capsule and ARFI for
-CG, as the background in the sagittal plane, and the original image stack as
-background in the axial and coronal planes. All three orthogonal views were set
-to the label map assigned to the resampled volume. The B-mode derived capsule
-was segmented and modeled before the central gland. Parameters used for 3D
-model rendering were identical to those used in table X [ZACH] for MR modeling.
-The modeled capsule helped guide the CG segmentation by enabling capsule model
-intersections in the three orthogonal planes during CG segmentation
-(Figure~\ref{fig:arfi_seg}). The capsule provided an outer boundary for the CG
-segmentation. The capsule and CG models were then measured identically to the
-MR measurement procedure.
+of the sagittal segmentation to further improve segmentation accuracy.
+Parameters used for 3D model rendering were identical to those used for MR
+modeling (Table~\ref{tab:3dslicer}).  The modeled capsule helped guide the CG
+segmentation by enabling capsule model intersections in the three orthogonal
+planes during CG segmentation (Figure~\ref{fig:arfi_segs}). The capsule provided
+an outer boundary for the CG segmentation. The capsule and CG models were then
+measured using the same procedure as the MR images.
 
 \input{fig_arfi_segs}
 
-\input{fig_roi_tool}
