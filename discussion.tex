@@ -1,31 +1,34 @@
 \section{Discussion}\label{sect:discussion}
-This study was designed to compared the zonal anatomy of the prostate in
-patients with biopsy-proven PCa as seen in ARFI imaging and MR T2WI.  Overall,
-ARFI imaging performed well when compared with MR estimates of total and
-central gland volume (Figure~\ref{fig:mr_arfi_volumes}), though ARFI tended to
-overestimate prostate total gland volume, most commonly due to over-estimation
-of the lateral dimension of the prostate.  This can be due to poor contrast
-between the PZ and peri-prostatic fat (Figure~\ref{fig:arfi_segs}).
-Figure~\ref{fig:arfi_segs} also demonstrates challenges in delineating the
-anterior aspect of the prostate in both ARFI and B-mode images due to poor SNR
-since this is the deepest aspect of the prostate relative to the rectal wall
-imaging surface. MR T2WI can also have difficulties visualizing and diagnosing
-lesions in the anterior region of the prostate,~\cite{Gupta2013}, which is
-thought to be secondary to the heterogeneity of the gland in that area,
-especially in the presence of BPH.  This was evident in imaging study subject
-4, with a $\sim$143 g prostate (Figure~\ref{fig:mr_arfi_weight}), which was an
-outlier in terms of weight and volume.  While the anterior aspect of the
-prostate can be challenging to visualize, it was the axis with the best
-agreement between ARFI and MR imaging (Figure~\ref{fig:mr_arfi_path_axes}(b),
-Table~\ref{tab:mr_arfi_axes_error}).  ARFI images consistently underestimated
-the extent of the prostate capsule and CG along the apex-to-base axis relative
-to MR T2WI (Figure~\ref{fig:mr_arfi_path_axes}(c),
+This study demonstrated that ARFI imaging delineates zonal anatomy of the
+prostate well when compared to MR T2WI, with comparable estimates of total and
+central gland volume (Figure~\ref{fig:mr_arfi_volumes}).  Establishing accurate
+delineation of the prostate's zonal anatomy is important since PCa has a strong
+correlations with location in the prostate, specifically in the peripheral
+zone, and accurate capsule delineation will facilitate future efforts to
+register 3D imaging datasets between ARFI and MR imaging.  
+
+This was the first quantitative comparison between ARFI imaging and a newly
+established clinical imaging modality to evaluate the prostate for PCa
+detection and characterization, and we have drawn some useful conclusions in
+how our zonal anatomy boundaries are determined during image segmentation.
+Poor contrast between the PZ and peri-prostatic fat in B-mode images can lead
+to an overestimation of lateral boundaries of the prostate in our ultrasound
+datasets compared to MR T2WI, leading to an overall overestimation of prostate
+total gland volume.  The anterior aspect of the prostate can also be
+challenging to delineate, especially in large prostates, where SNR decreases
+with increasing depth away from our rectal wall imaging surface and MR images
+suffer from gland heterogeneity in this region~\cite{Gupta2013}, though we had
+good agreement between ARFI and MR T2W images in the anterior-to-posterior
+dimension (Figure~\ref{fig:mr_arfi_path_axes}(b),
+Table~\ref{tab:mr_arfi_axes_error}).  Surprisingly, ARFI imaging consistently
+underestimated the extent of the prostate capsule and CG along the apex-to-base
+axis relative to MR T2WI (Figure~\ref{fig:mr_arfi_path_axes}(c),
 Table~\ref{tab:mr_arfi_axes_error}), though the reasons for this
-underestimation were not clear.
+underestimation are not clear.
 
 This study has several limitations that should be considered when interpreting
 these results.  Gross pathology weight and axis measurements could both be
-affected by the presence of periprostatic tissue that was excised during
+affected by the presence of peri-prostatic tissue that was excised during
 radical prostatectomy, especially in cases where more aggressive margins may
 have been necessary.  For this reason, unlike the image-to-image measurement
 comparisons, all of the image metrics presented relative to pathology metrics
@@ -46,20 +49,27 @@ anatomy of a healthy (young) prostate is expected to be different from the
 prostate of a middle-age man, who is the target demographic for PCa screening
 imaging and PCa characterization. 
 
-It should also be noted that this study did not evaluate user biases in image
-segmentation.  While MR zonal anatomy delineation has some establishment in the
-clinical literature, this study is the first attempt to define the criteria for
-ARFI imaging zonal anatomy characteristics, and it is expected that such
-delineations will continue to be refined as we acquire more cases and continue
-to compare with MRI and pathology data.  Given this limitation, no attempts
-were made to further quantify reader-to-reader variability in this work.
+This study did not evaluate user biases in image segmentation.  While MR zonal
+anatomy delineation has some establishment in the clinical literature, this
+study is the first attempt to define the criteria for ARFI imaging zonal
+anatomy characteristics, and it is expected that such delineations will
+continue to be refined as we acquire more cases and continue to compare with
+MRI and pathology data.  Given this limitation, no attempts were made to
+further quantify reader-to-reader variability in this work.
 
 Future directions for our research include deeper analysis of our findings,
 especially the lateral dimension over-estimation, to improve our anatomic
 delineation and assess further its clinical impact.  Technological improvements
 to improve anterior prostate boundary delineation in both B-mode and ARFI
 imaging are also being pursued and will hopefully allow for the currently
-elusive anterior PCa lesions in MR to be seen in ARFI imaging.  Although work
-remains to be done, the fact that one can view the different prostatic zones on
-ARFI images in addition to MRI is encouraging and could lead to targeted
-diagnostic biopsies and therapies with real-time imaging for men with PCa. 
+elusive anterior PCa lesions in MR to be seen in ARFI imaging.  3D models of
+the prostate and central glands will be used across ARFI and MR imaging
+datasets to spatially register them to facilitate correlation of regions of PCa
+suspicion between the two modalities, and to correlate with whole-mount
+histology of the excised prostate specimens.  This effort will allow the
+sensitivity and specificity of each imaging modality for PCa detection and
+characterization to be quantified.  While ARFI imaging of the prostate in a
+constantly evolving technology, the fact that one can view the different
+prostatic zones on ARFI images in addition to MRI is encouraging and could lead
+to targeted diagnostic biopsies and therapies with real-time imaging for men
+with PCa. 
