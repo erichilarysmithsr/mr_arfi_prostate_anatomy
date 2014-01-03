@@ -21,6 +21,22 @@ Specifically, four lines were dedicated to tracking the on-axis displacement,
 with all 4 beams located inside the beamwidth of the pushing pulses such that
 the beam spacing was 0.17 mm. 
 
+3D volumetric imaging data was acquired using mechanical rotation of the ER7B
+transducer between sequential imaging frames, sweeping across the lateral
+extent of the prostate.  This rotation setup utilized a CIVCO
+Micro-Touch\texttrademark stabalizer (CIVCO Medical Solutions, Kalona, IA USA)
+that allows for complete 6-axis degrees of freedom for manual positioning of
+the transducer to sweep through the entire prostate during imaging.  Sequential
+imaging frames were $\sim$ 1-2\degree apart, depending on the absolute size of the
+prostate.  A custom optical angular feedback transduction circuit utilizing a
+reflective linear strip with 500 lines-per-inch (LPI) resolution (US Digital,
+Vancouver, WA, USA) was coupled with a 141 oz-in torque stepper motor with
+planetary gearbox (Model \#11YPG202S-LW4-R27, Anaheim Automation, Anaheim, CA,
+USA) (Figure~\ref{fig:setup_annotated}) to achieve accurate spatial
+localization of the imaging frames in the 3D dataset.
+
+\input{fig_setup_annotated}
+
 Displacement estimation was performed using a phase-shift estimator on the
 beamformed in-phase and quadrature (IQ) data~\cite{Loupas95,pinton06}. The ARFI
 data were then normalized as a function of depth to account for attenuation and
@@ -28,5 +44,3 @@ focal gain effects.  This normalization was performed using a displacement
 profile measured in a homogeneous tissue-mimicking phantom, which was applied
 to all displacements in the entire data set at each time step, and then
 low-pass filtered with a cutoff-frequency of 0.8 mm$^{-1}$.
-
-\textcolor{red}{TO DO: INCLUDE TEXT AND FIGURE ABOUT THE TRANSDUCER ROTATION SETUP.  HIGHLIGHT WHAT THE NATIVE IMAGING PLANE IS, THE SCAN CONVERSION, ETC.}
