@@ -1,0 +1,52 @@
+\subsection{ARFI and MR T2WI Agreement}
+This study demonstrated that ARFI imaging delineates zonal anatomy of the
+prostate well when compared to MR T2WI, with comparable estimates of total and
+central gland volume (Figure~\ref{fig:mr_arfi_volumes}).  Establishing accurate
+delineation of the prostate's zonal anatomy is important since PCa has strong
+correlations with location in the prostate, specifically in the peripheral
+zone, and accurate capsule delineation will facilitate future efforts to
+register 3D imaging datasets between ARFI and MR imaging.  
+
+This was the first quantitative comparison between ARFI imaging and a newly
+established clinical imaging modality to evaluate the prostate for PCa
+detection and characterization, and we have drawn some useful conclusions in
+how our zonal anatomy boundaries are determined during image segmentation.
+Poor contrast between the PZ and peri-prostatic fat in B-mode images can make
+delineation of the prostate boundary in the lateral dimension challenging,
+emphasizing the need to use the orthogonal imaging plane views to help endure
+organ continuity in all three dimensions.  Our study demonstrated an
+overestimation of lateral boundaries of the prostate in our ultrasound datasets
+compared to MR T2WI, leading to an overall overestimation of prostate total
+gland volume.  We did not expect perfect agreement between MR and ARFI imaging
+in this dimension since each modality applies a different amount of external
+compression to the rectal wall that can deform the prostate different amounts.
+Presure on the prostate during ARFI imaging is modulated by the urologist when
+he locks the transducer rotation apparatus in place prior to imaging, and
+deformation of the prostate can be easily visualized during this alignment
+process.  It was our goal to apply as little pressure to the prostate during
+imaging, while still maintaining uniform contact throughout all imaging angles,
+which is critical since poor acoustic coupling to the prostate through the
+rectal wall can greatly diminish ARFI image displacement SNR.
+
+The anterior aspect of the prostate can also be challenging to delineate,
+especially in large prostates, where SNR decreases with increasing depth away
+from our rectal wall imaging surface and MR images suffer from gland
+heterogeneity in this region~\cite{Gupta2013}, though we had good agreement
+between ARFI and MR T2W images in the anterior-to-posterior dimension
+(Figure~\ref{fig:mr_arfi_path_axes}(b), Table~\ref{tab:mr_arfi_axes_error}).
+
+ARFI imaging consistently underestimated the extent of the prostate capsule and
+CG along the apex-to-base axis relative to MR T2WI
+(Figure~\ref{fig:mr_arfi_path_axes}(c), Table~\ref{tab:mr_arfi_axes_error}).
+This was the dimension with the worst spatial resolution in MR imaging, with a
+typical slice thickness in MR T2WI being $\sim$3 mm for these studies.  While
+higher-resolution MR images could be obtained and analyzed for more precise
+comparisons in this imaging dimension, such data was not available for this
+study.  Additionally, it should also be noted that the precision in ARFI
+imaging for this study is also constrained by the decimation used to reduce the
+number of imaging planes manually segmented, introducing a lower-bound on the
+model precision of, again, $\sim$3 mm.  While less decimation could improve the
+precion of the prostate and GG axis measurements, this would have introduced
+sigificant overhead in the manual segmentation process, with diminishing
+returns given the spatial smoothing of the modeling algorithms that were
+utilized (Table~\ref{tab:3dslicer}).
