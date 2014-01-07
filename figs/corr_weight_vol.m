@@ -37,12 +37,24 @@ function gen_fig_n_fits(fid,w,mr_total_vol,arfi_total_vol,metric)
     fs = 18;
     figure;
     hold on;
+
+    % circle the outlier(s), > 80g path weight
+    gt80g = find(w > 80);
+
     if(strcmp(metric,'path_vol_weight')),
         plot(w,mr_total_vol,'bx','MarkerSize',14,'LineWidth',3);
+        % circle the outlier
+        plot(w(gt80g),mr_total_vol(gt80g),'o','MarkerSize',32,'LineWidth',2,'Color','m');
     else,
         plot(w,mr_total_vol,'bx','MarkerSize',14,'LineWidth',3);
         plot(w,arfi_total_vol,'go','MarkerSize',14,'LineWidth',3);
+        % circle the outliers
+        plot(w(gt80g),mr_total_vol(gt80g),'o','MarkerSize',32,'LineWidth',2,'Color','m');
+        plot(w(gt80g),arfi_total_vol(gt80g),'o','MarkerSize',32,'LineWidth',2,'Color','m');
     end;
+
+
+
     if(strcmp(metric,'path_vol_weight')),
         ylabel('Pathology Ellipsoidal Volume (cm^3)','FontSize',fs)
     else,
@@ -57,15 +69,17 @@ function gen_fig_n_fits(fid,w,mr_total_vol,arfi_total_vol,metric)
     set_axes(gca,fs);
 
     % lets do a linear regression and see what we get
-    [mr_fit,mr_Rsq]=compute_linreg_Rsq(w,mr_total_vol);
 
-    plot(w,mr_fit,'-b','LineWidth',3);
+    % first we need to remove the prostate > 80 g
+    less80g = find(w < 80);
+
+    [mr_fit,mr_Rsq]=compute_linreg_Rsq(w(less80g),mr_total_vol(less80g));
+
+    plot(w(less80g),mr_fit,'-b','LineWidth',3);
 
     if(~strcmp(metric,'path_vol_weight')),
-        [arfi_fit,arfi_Rsq]=compute_linreg_Rsq(w,arfi_total_vol);
-
-        plot(w,arfi_fit,'-g','LineWidth',3);
-
+        [arfi_fit,arfi_Rsq]=compute_linreg_Rsq(w(less80g),arfi_total_vol(less80g));
+        plot(w(less80g),arfi_fit,'-g','LineWidth',3);
     end;
 
     if(strcmp(metric,'path_vol_weight')),
@@ -73,7 +87,11 @@ function gen_fig_n_fits(fid,w,mr_total_vol,arfi_total_vol,metric)
         legend boxoff;
         fprintf(fid,'\\newcommand{\\pathVolWeightRsq}{%.2f}\n',mr_Rsq);
     else,
-        legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
+        if(strcmp(metric,'pathVol')),
+            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthEast');
+        else,
+            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
+        end;
         legend boxoff;
         if(strcmp(metric,'pathVol')),
             fprintf(fid,'\\newcommand{\\pathVolMRrsq}{%.2f}\n',mr_Rsq);
