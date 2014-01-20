@@ -2,14 +2,14 @@
 \subsubsection{MR Image Segmentation and Modeling}
 Axial MR T2WI images were manually segmented using the smooth polygon tool in
 ITK-SNAP~\cite{Yushkevich2006}, using unique labels for the PZ, CG and AFS. The
-gland was segmented from base to apex.  The base was identified below the
+gland was segmented from base-to-apex.  The base was identified below the
 bladder, and subsequent images were segmented until the last slice with visible
 prostatic tissue was identified caudally. The CG, urethra, PZ and AFS were
 segmented independently according to their well-established anatomical
 characteristics on
 T2WI.~\cite{Barentsz2012,Jung2012,Poon1985,Hricak2007,Bonekamp2011} The PZ was
 identified by its homogeneous high signal intensity on T2WI, which is usually
-similar to that of the nearby periprostatic fat. The CG was visualized and
+similar to that of the nearby peri-prostatic fat. The CG was visualized and
 delineated based on its heterogeneous, lower signal intensity and its location
 (Figure~\ref{fig:mr_anatomy}). The urethra was included in the CG segmentation.
 When visible, the AFS was identified by its low T2 signal intensity and its
@@ -37,7 +37,7 @@ The 3D models were used to render volume estimates of the PZ and CG, with the
 sum of PZ and CG representing the total prostate gland volume. AFS volume
 estimates in select MR cases were included in the total prostate gland volume
 estimates. Orthogonal tri-axial measurements in the lateral-to-lateral,
-apex-to-base, and anterior-to-posterior dimensions were made in slicer by
+apex-to-base, and anterior-to-posterior dimensions were made in 3D Slicer by
 placing an ROI cube in the model's center and expanding the ROI cube to fit the
 maximal model dimensions (Figure~\ref{fig:roi_tool}). 
 
@@ -55,18 +55,17 @@ models of the zonal anatomy volumes were rendered
 \subsubsection{Ultrasound Image Segmentation and Modeling}
 Sagittal B-mode and ARFI ultrasound image stacks were segmented in 3D Slicer
 using the \verb+draweffect+ tool to model and measure the prostate capsule and
-CG volume and tri-axial dimensions.  The sagittal imaging plane was chosen for
-segmentation because it has a greater number of easily identifiable anatomical
-structures:  seminal vesicles in the left and right posterior base, urethra in
-the mid apex, surrounding fibromuscular tissue in the anterior , and rectum in
-the posterior  than either the axial or coronal views. Prostate capsule was
-segmented in B-mode as this modality offers both high contrast between
-prostatic tissue and surrounding periprostatic fat, and better SNR in the
-anterior capsule region than ARFI images. ARFI images were used for CG
-segmentation.  Prior to segmentation, both the B-mode and ARFI image stacks
-were down-sampled along the sagittal axis by a factor of 20 (i.e., from 360
-slices per image stack to 18 slices per image stack) to reduce the number of
-manually-segmented frames. 
+CG volume and tri-axial dimensions (Figure~\ref{fig:arfi_segs}).  The sagittal
+imaging plane was chosen for segmentation because it has a greater number of
+easily identifiable anatomical structures:  seminal vesicles in the left and
+right posterior base, urethra in the mid apex, surrounding fibromuscular tissue
+in the anterior, and rectum in the posterior. Prostate capsule was segmented in
+B-mode as this modality offers both high contrast between prostatic tissue and
+surrounding peri-prostatic fat, and better SNR in the anterior capsule region
+than ARFI images. ARFI images were used for CG segmentation.  Prior to
+segmentation, both the B-mode and ARFI image stacks were down-sampled along the
+sagittal axis by a factor of 20 (i.e., from 360 slices per image stack to 18
+slices per image stack) to reduce the number of manually-segmented frames. 
 
 While segmentations were performed along the sagittal plane, label map
 intersections in the axial and coronal views were used during active creation
