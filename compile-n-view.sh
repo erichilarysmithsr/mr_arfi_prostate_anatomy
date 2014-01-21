@@ -1,4 +1,4 @@
-tmp_latex = "/tmp/latex"
+tmp_latex="/tmp/latex"
 
 if [ ! -d $tmp_latex ]; then
     mkdir $tmp_latex
