@@ -64,8 +64,9 @@ B-mode as this modality offers both high contrast between prostatic tissue and
 surrounding peri-prostatic fat, and better SNR in the anterior capsule region
 than ARFI images. ARFI images were used for CG segmentation.  Prior to
 segmentation, both the B-mode and ARFI image stacks were down-sampled along the
-sagittal axis by a factor of 20 (i.e., from 360 slices per image stack to 18
-slices per image stack) to reduce the number of manually-segmented frames. 
+sagittal axis to a slice thickness of 3 mm to reduce the number of
+manually-segmented frames (18 vs. 360 slices / image stack) and match the MRI
+slice thickness. 
 
 While segmentations were performed along the sagittal plane, label map
 intersections in the axial and coronal views were used during active creation
@@ -73,9 +74,9 @@ of the sagittal segmentation to further improve segmentation accuracy.
 Parameters used for 3D model rendering were identical to those used for MR
 modeling (Table~\ref{tab:3dslicer}).  The modeled capsule helped guide the CG
 segmentation by enabling capsule model intersections in the three orthogonal
-planes during CG segmentation (Figure~\ref{fig:arfi_segs}). The capsule provided
-an outer boundary for the CG segmentation. The capsule and CG models were then
-measured using the same procedure as the MR images.
+planes during CG segmentation (Figure~\ref{fig:arfi_segs}). The capsule
+provided an outer boundary for the CG segmentation. The capsule and CG models
+dimensions were then measured using the same procedure as the MR images.
 
 \input{fig_arfi_segs}
 
