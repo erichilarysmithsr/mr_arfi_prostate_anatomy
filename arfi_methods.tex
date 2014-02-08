@@ -16,10 +16,11 @@ total of 82 lateral locations were interrogated to cover the 55 mm field of
 view, translating 0.67 mm laterally per location.
 
 For the tracking pulses, 16 parallel receive lines at 5.0 MHz were spaced to
-observe both the on and off-axis response of the tissue to the pushing pulses.
-Specifically, four lines were dedicated to tracking the on-axis displacement,
-with all 4 beams located inside the beamwidth of the pushing pulses such that
-the tracking beam spacing was 0.17 mm. 
+observe the response of the tissue to the pushing pulses.  Specifically, four
+lines were dedicated to tracking the on-axis displacement, with all 4 beams
+located inside the beamwidth of the pushing pulses such that the tracking beam
+spacing was 0.17 mm.  The tracking beams were focused at 60 mm with F/3
+transmit and F/0.5 receive focal configurations.
 
 3D volumetric imaging data was acquired using mechanical rotation of the ER7B
 transducer between sequential imaging frames, sweeping across the lateral
@@ -29,11 +30,12 @@ that allows for complete 6-axis degrees of freedom for manual positioning of
 the transducer to sweep through the entire prostate during imaging.  Sequential
 imaging frames were $\sim$1\degree apart, depending on the absolute size of the
 prostate.  A custom optical angular feedback transduction circuit utilizing a
-reflective linear strip with 500 lines-per-inch (LPI) resolution (US Digital,
-Vancouver, WA, USA) was coupled with a 141 oz-in torque stepper motor with
-planetary gearbox (Model \#11YPG202S-LW4-R27, Anaheim Automation, Anaheim, CA,
-USA) (Figure~\ref{fig:setup_annotated}) to achieve accurate spatial
-localization of the imaging frames in the 3D dataset.
+reflective linear strip with 212 lines-per-inch (LPI) resolution (US Digital,
+Vancouver, WA, USA) with a QSB-S Quadrature-to-USB adapter to achieve 9 line /
+degree resolution.  Rotation was performed with a 141 oz-in torque stepper
+motor with planetary gearbox (Model \#11YPG202S-LW4-R27, Anaheim Automation,
+Anaheim, CA, USA) (Figure~\ref{fig:setup_annotated}) to achieve accurate
+spatial localization of the imaging frames in the 3D dataset.
 
 \input{fig_setup_annotated}
 
@@ -41,11 +43,13 @@ Displacement estimation was performed using a phase-shift estimator on the
 beamformed in-phase and quadrature (IQ) data~\cite{Loupas95,pinton06}. The ARFI
 data were then normalized as a function of depth to account for attenuation and
 focal gain effects.  This normalization was performed using a displacement
-profile measured in a homogeneous tissue-mimicking phantom, which was applied
-to all displacements in the entire data set at each time step, and then
-low-pass filtered with a cutoff-frequency of 0.8 mm$^{-1}$.
+profile measured in a homogeneous tissue-mimicking phantom that was low-pass
+filtered with a cutoff-frequency of 0.8 mm$^{-1}$.  This filtered normalization
+profile was applied to all displacements in the entire data set at each time
+step.
 
-The normalized displacement data were scan-converted using a 3D Delaunay
+The normalized displacement data were scan-converted using a 2D Delaunay
 triangulation interpolation method in Matlab (R2012b, The MathWorks, Inc,
-Natick, MA, USA).  The scan-converted ARFI imaging data had a final isotropic
-voxel size of 0.15 $\times$ 0.15 $\times$ 0.15 mm$^3$.
+Natick, MA, USA) for each lateral location in the dataset.  The scan-converted
+ARFI imaging data had a final isotropic voxel size of 0.15 $\times$ 0.15
+$\times$ 0.15 mm$^3$.
