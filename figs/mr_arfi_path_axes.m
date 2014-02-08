@@ -82,6 +82,7 @@ function mr_arfi_path_axes
         line([2 8],[2 8],'LineStyle','--','Color','k','LineWidth',3);
 
         print('-depsc2',sprintf('%s.eps',axis_titles{i}));
+        print('-dpng',sprintf('%s.png',axis_titles{i}));
         close;
 
         % compute over/unders for each modality
@@ -141,6 +142,7 @@ function mr_arfi_path_axes
         line([2 8],[2 8],'LineStyle','--','Color','k','LineWidth',3);
 
         print('-depsc2',sprintf('Imaging_%s.eps',axis_titles{i}));
+        print('-dpng',sprintf('Imaging_%s.png',axis_titles{i}));
         close;
 
         % compute over/unders for each modality
@@ -202,6 +204,7 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
         print('-depsc2',sprintf('mr_arfi_total_axes%i.eps',i));
+        print('-dpng',sprintf('mr_arfi_total_axes%i.png',i));
         close;
     end;
 
@@ -237,6 +240,7 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
         print('-depsc2',sprintf('mr_arfi_central_axes%i.eps',i));
+        print('-dpng',sprintf('mr_arfi_central_axes%i.png',i));
         close;
     end;
 
@@ -281,6 +285,7 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
         print('-depsc2',sprintf('mr_arfi_total_over_under%i.eps',i));
+        print('-dpng',sprintf('mr_arfi_total_over_under%i.png',i));
         close;
 
         % while I'm here, lets compute some stats to include in the caption / text, and LaTeX format it!!
@@ -316,6 +321,7 @@ function mr_arfi_path_axes
             'FontSize'    , fs);
 
         print('-depsc2',sprintf('mr_arfi_central_over_under%i.eps',i));
+        print('-dpng',sprintf('mr_arfi_central_over_under%i.png',i));
         close;
         fprintf(fid,'ARFI & MR & Central & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Central_OverUnder(:,i)),std(ARFI_MR_Central_OverUnder(:,i)));
     end;

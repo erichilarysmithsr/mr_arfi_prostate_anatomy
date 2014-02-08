@@ -54,6 +54,7 @@ legend boxoff;
 set_axes(gca,fs);
 
 print('-depsc2','mr_arfi_volumes.eps');
+print('-dpng','mr_arfi_volumes.png');
 close;
 
 % lets do a little more processing to figure out what is going on... first the
@@ -73,6 +74,7 @@ a(4) = 110;
 axis(a);
 text(0.5,100,sprintf('Mean Diff = %.1f +/- %.1f',mean(arfi_mr_vol_diff),std(arfi_mr_vol_diff)),'FontSize',fs);
 print('-depsc2','mr_arfi_volume_diff.eps');
+print('-dpng','mr_arfi_volume_diff.png');
 close;
 
 % now lets look at the relative ratios of CG:total volume for each modality
@@ -136,6 +138,7 @@ figure;
     % add ideal line
     line([15 80],[15 80],'LineStyle','--','Color','k','LineWidth',3);
     print('-depsc2','mr_arfi_total_linreg.eps');
+    print('-dpng','mr_arfi_total_linreg.png');
 close;
 
 [mr_arfi_central_fit,mr_arfi_central_Rsq]=compute_linreg_Rsq(mr_cg_vol/1e3,arfi_cz_vol/1e3);
@@ -157,6 +160,7 @@ figure;
     % add ideal line
     line([5 60],[5 60],'LineStyle','--','Color','k','LineWidth',3);
     print('-depsc2','mr_arfi_central_linreg.eps');
+    print('-dpng','mr_arfi_central_linreg.png');
     close;
 
 

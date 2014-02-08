@@ -103,6 +103,7 @@ function gen_fig_n_fits(fid,w,mr_total_vol,arfi_total_vol,metric)
     end;
 
     print('-depsc2',sprintf('corr_%s_vol.eps',metric));
+    print('-dpng',sprintf('corr_%s_vol.png',metric));
     close;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
