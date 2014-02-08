@@ -2,8 +2,9 @@
 \usepackage{epsf,graphicx,color,epstopdf}
 \usepackage{lineno}
 \usepackage{setspace}
-\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
 \usepackage{soul}
+\usepackage[lists,heads,figuresonly]{endfloat}
 
 \newcommand{\exvivo}{\textit{ex vivo }}
 \newcommand{\invivo}{\textit{in vivo }}
@@ -53,6 +54,12 @@
 
 \maketitle
 
+\input{acknowledgements}
+
+\input{disclosures}
+
+\newpage
+
 \linenumbers
 
 \input{abstract}
@@ -69,15 +76,11 @@
 
 \input{conclusions}
 
-\input{acknowledgements}
-
-\input{disclosures}
-
 \clearpage
 \input{appendices}
 
 \clearpage
-\bibliographystyle{IEEEtran}
-\bibliography{library,slicer3d}
+\bibliographystyle{vancouver}
+\bibliography{library_no_urls,slicer3d}
 
 \end{document}
