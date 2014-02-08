@@ -1,7 +1,19 @@
-Acoustic Radiation Force Impulse (ARFI) Prostate Zonal Anatomy: Comparison with
-Endorectal T2-Weighted MR Imaging (T2WI)
+Acoustic Radiation Force Impulse (ARFI) Imaging Prostate Zonal Anatomy:
+Comparison with 3T T2-Weighted MR Imaging (T2WI)
 
 This manuscript utilizes the IEEEtran.cls for LaTeX that is assumed to be
-available for compilation.
+available for compilation.  Lots of other LaTeX packages are imported in
+mr_arfi_anatomy.tex .
 
-compile-n-view.sh can be run to get realtime LaTeX rendering, if you have latexmk installed; otherwise, pdflatex can be used (cannot use latex directly since jpb/png images are being included directly).  I have specifically *not* included mr_arfi_anatomy.pdf in the committed repository since that can create lots of conflicts w/ intermediate editing & viewing of the manuscript, so you need to compile it in your local working version
+compile-n-view.sh can be run to get realtime LaTeX rendering, if you have
+latexmk installed; otherwise, pdflatex can be used (cannot use latex directly
+since jpb/png images are being included directly).  I have specifically *not*
+included mr_arfi_anatomy.pdf in the committed repository since that can create
+lots of conflicts w/ intermediate editing & viewing of the manuscript, so you
+need to compile it in your local working version
+
+parse.py will parse the document into the individual files that need to be
+uploaded; though all of the PDFs need to be converted to PS files.  Figure
+files were also cropped before converting to PS.
+
+Ultrasonic Imaging submission: UIX-14-0012 (2014-02-15)
