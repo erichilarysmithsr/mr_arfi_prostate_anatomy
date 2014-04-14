@@ -1,41 +1,113 @@
 Reviewer: 1
 
 Comments to the Author
-This manuscripts describes exciting work demonstrating the potential relevance of acoustic radiation force impulse (ARFI) and B-Mode ultrasound for delineating prostate zonal anatomy dimensions and volumes in application to prostate cancer diagnosis and treatment.  The current state of the art involves MRI imaging, but an ultrasound-based complement would offer the benefits of being low-cost, real-time and portable.  This work should be of great interest to both the technically and clinically oriented UI readership.  Overall, the manuscript is very well written, and the presented in vivo, clinical data support the conclusions drawn. There are a few minor questions/comments for the authors to consider before publication, which is recommended:
+This manuscripts describes exciting work demonstrating the potential relevance
+of acoustic radiation force impulse (ARFI) and B-Mode ultrasound for
+delineating prostate zonal anatomy dimensions and volumes in application to
+prostate cancer diagnosis and treatment.  The current state of the art involves
+MRI imaging, but an ultrasound-based complement would offer the benefits of
+being low-cost, real-time and portable.  This work should be of great interest
+to both the technically and clinically oriented UI readership.  Overall, the
+manuscript is very well written, and the presented in vivo, clinical data
+support the conclusions drawn. There are a few minor questions/comments for the
+authors to consider before publication, which is recommended:
 
--An artistic rendering or other illustration of prostate anatomy would facilitate the readers' understanding of the description of prostate anatomy in section II.A.
+-An artistic rendering or other illustration of prostate anatomy would
+facilitate the readers' understanding of the description of prostate anatomy in
+section II.A.
 
-- Pg 5, lines 109-112, are redundant with other text previously written in the background.
+- Pg 5, lines 109-112, are redundant with other text previously written in the
+  background.
 
--The methods section describes that diffusion weighted images (with ADC maps) and dynamic contrast enhanced MRI data were acquired in addition to the T2W images.  Were the the diffusion and contrast enhanced MRI data used in the MRI segmentation and/or analysis of MRI performance (as compared to ARFI).  It does not appear that they were.  Why not?  Also, what contrast agent was used?
+-The methods section describes that diffusion weighted images (with ADC maps)
+and dynamic contrast enhanced MRI data were acquired in addition to the T2W
+images.  Were the the diffusion and contrast enhanced MRI data used in the MRI
+segmentation and/or analysis of MRI performance (as compared to ARFI).  It does
+not appear that they were.  Why not?  Also, what contrast agent was used?
 
--Please describe what is meant by the "longitudinal array" (pg 6 line 151) and specify that the ER7B is an endorectal transducer.  This was stated in the associated figure caption but not in the text.  Also, please state more clearly in the text that ARFI imaging was performed endorectally.
+-Please describe what is meant by the "longitudinal array" (pg 6 line 151) and
+specify that the ER7B is an endorectal transducer.  This was stated in the
+associated figure caption but not in the text.  Also, please state more clearly
+in the text that ARFI imaging was performed endorectally.
 
--Why were the tracking beams focused (@ 60 mm) twice as deep as the pushing beams (@ 30 mm and above)?  It would seem that the radiation force would not propagate this far below the pushing focal position. (pg 6 lines 163 and 154, respectively).
+-Why were the tracking beams focused (@ 60 mm) twice as deep as the pushing
+beams (@ 30 mm and above)?  It would seem that the radiation force would not
+propagate this far below the pushing focal position. (pg 6 lines 163 and 154,
+respectively).
 
--For the displacement normalization factor derived in phantom materials (pg 7 lines 176-177), what were the acoustic and mechanical properties of the phantom, and were these well matched to the expected properties of prostate tissue?  How much are these properties expected to vary from individual to individual, with or without prostate cancer?  What would the impact of using of an incorrect normalization factor be on the overall ARFI results?  The authors should consider adding a discussion of the potential impact of the assumed normalization factor to the limitations sections.
+-For the displacement normalization factor derived in phantom materials (pg 7
+lines 176-177), what were the acoustic and mechanical properties of the
+phantom, and were these well matched to the expected properties of prostate
+tissue?  How much are these properties expected to vary from individual to
+individual, with or without prostate cancer?  What would the impact of using of
+an incorrect normalization factor be on the overall ARFI results?  The authors
+should consider adding a discussion of the potential impact of the assumed
+normalization factor to the limitations sections.
 
--Pg 8 lines 205-214 describe that both B-Mode (for prostate capsule) and ARFI (for CG) data were used for segmentation.  First, how were these data combined?  Second, the use of B-Mode segmentation in addition to ARFI is not clearly specified in the titles, text and figures.  For example, in Table III, was the total volume calculation a result of both ARFI and B-Mode segmentations?  In that case, the title and column labels describing "ARFI" total volume are confusing because they imply that the B-Mode segmentation data were not used.  The same is true for the other tables, figures, text, and the main Title of the manuscript.  If I understand correctly that B-Mode data were important to the overall total volume segmentation, then it would be appropriate to better clarify this point.  The point is currently confused by the main manuscript title, text and figures that generally refer to "ARFI" performance.  I believe the authors try to indicate that both B-Mode and ARFI data are used for the segmentation by referring to the "ultrasound" imaging performance, as in "… with a mean overestimation of of 16.82 ± 22.45% by ultrasound imaging compared to MR volumes (Figure 6(b))." (pg 9 line 225), but this reader did not immediately appreciate that "ultrasound" referred to combined B-mode and ARFI segmentation as opposed to ARFI alone, and the "ARFI" labels throughout the rest of the text, tables, titles, and figures further confused this point.
+-Pg 8 lines 205-214 describe that both B-Mode (for prostate capsule) and ARFI
+(for CG) data were used for segmentation.  First, how were these data combined?
+Second, the use of B-Mode segmentation in addition to ARFI is not clearly
+specified in the titles, text and figures.  For example, in Table III, was the
+total volume calculation a result of both ARFI and B-Mode segmentations?  In
+that case, the title and column labels describing "ARFI" total volume are
+confusing because they imply that the B-Mode segmentation data were not used.
+The same is true for the other tables, figures, text, and the main Title of the
+manuscript.  If I understand correctly that B-Mode data were important to the
+overall total volume segmentation, then it would be appropriate to better
+clarify this point.  The point is currently confused by the main manuscript
+title, text and figures that generally refer to "ARFI" performance.  I believe
+the authors try to indicate that both B-Mode and ARFI data are used for the
+segmentation by referring to the "ultrasound" imaging performance, as in "…
+with a mean overestimation of of 16.82 ± 22.45% by ultrasound imaging compared
+to MR volumes (Figure 6(b))." (pg 9 line 225), but this reader did not
+immediately appreciate that "ultrasound" referred to combined B-mode and ARFI
+segmentation as opposed to ARFI alone, and the "ARFI" labels throughout the
+rest of the text, tables, titles, and figures further confused this point.
 
--How many readers performed the B-Mode and ARFI segmentation per image? per entire study data set? Were the readers trained, and if so, how?  Did different readers segment the B-Mode and ARFI data sets?  Did the same radiologist who segmented the MRI images also segment the B-Mode and ARFI data?
+-How many readers performed the B-Mode and ARFI segmentation per image? per
+entire study data set? Were the readers trained, and if so, how?  Did different
+readers segment the B-Mode and ARFI data sets?  Did the same radiologist who
+segmented the MRI images also segment the B-Mode and ARFI data?
 
 -How would limits to ARFI resolution impact the results?
 
--The authors explain that gross pathology weights and axis measurements were affected by the presence of peri-prostatic tissue.  Why could the peri-prostatic tissue not be differentiated from the prostatic tissue in histology after processing?  Wouldn't this enable better gold standard axis measurements?
+-The authors explain that gross pathology weights and axis measurements were
+affected by the presence of peri-prostatic tissue.  Why could the
+peri-prostatic tissue not be differentiated from the prostatic tissue in
+histology after processing?  Wouldn't this enable better gold standard axis
+measurements?
 
--Further to the point above, if the prostatic tissue axes could be measured after histological processing, could you perform an ROC analysis to assess ARFI/B-Mode versus MRI performance for axis measurement?
+-Further to the point above, if the prostatic tissue axes could be measured
+after histological processing, could you perform an ROC analysis to assess
+ARFI/B-Mode versus MRI performance for axis measurement?
 
 -pg 12, line 329, change "compliment" to "complement".
 
-- Note that in my version of the manuscript, the figures and the captions written below them are blurry and difficult to read.  This may just be a formatting issue with the automatic reviewer support system, but it is worth confirming that figures and their captions will be clear for publication.
-
-
+- Note that in my version of the manuscript, the figures and the captions
+  written below them are blurry and difficult to read.  This may just be a
+  formatting issue with the automatic reviewer support system, but it is worth
+  confirming that figures and their captions will be clear for publication.
 
 
 Reviewer: 2
 
 Comments to the Author
-This is a nice study of ARFI imaging of the prostate that compares ARFI images to MRI. Three areas of the paper could be improved:
-- the ellipsoidal prostate volume estimate from pathology could be improved by using the prostate segmentation on each of the whole mount pathology slides to align the data to the MRI prostate surface. The volume comparison is further complicated by the shrinkage of the prostate after fixation.
-- Image registration. The three orthogonal dimensions of the images do not mean much. The slice thickness in MRI causes significant errors along this measurement axis, while the lateral-to-lateral dimension in ARFI seems to be enlarged by the TRUS deformation (this is not mentioned in the discussion, but seems to be fairly obvious from Fig. 2 and 5, for example). A Jaccard index type of comparison would be preferable after rigid or possibly volume-preserving deformable registration.
-- discussion of prior work is inadequate. Volumetric acquisition and comparison of mechanical imaging with B-mode and MRI done before for vibro-elastography if not for ARFI and that work should be cited and discussed.
+This is a nice study of ARFI imaging of the prostate that compares ARFI images
+to MRI. Three areas of the paper could be improved:
+
+- the ellipsoidal prostate volume estimate from pathology could be improved by
+  using the prostate segmentation on each of the whole mount pathology slides
+  to align the data to the MRI prostate surface. The volume comparison is
+  further complicated by the shrinkage of the prostate after fixation.
+
+- Image registration. The three orthogonal dimensions of the images do not mean
+  much. The slice thickness in MRI causes significant errors along this
+  measurement axis, while the lateral-to-lateral dimension in ARFI seems to be
+  enlarged by the TRUS deformation (this is not mentioned in the discussion,
+  but seems to be fairly obvious from Fig. 2 and 5, for example). A Jaccard
+  index type of comparison would be preferable after rigid or possibly
+  volume-preserving deformable registration.
+
+- discussion of prior work is inadequate. Volumetric acquisition and comparison
+  of mechanical imaging with B-mode and MRI done before for vibro-elastography
+  if not for ARFI and that work should be cited and discussed.
