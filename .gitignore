@@ -5,6 +5,7 @@
 *.bbl
 *.blg
 *.dvi
+*.fff
 *.fls
 *.fdb_latexmk
 *.glg
@@ -33,3 +34,5 @@
 *.tdo
 *eps-converted-to.pdf
 mr_arfi_anatomy.pdf
+*.zip
+parsed_pdfs/
