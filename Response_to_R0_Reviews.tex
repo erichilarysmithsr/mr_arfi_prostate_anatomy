@@ -147,11 +147,39 @@ authors to consider before publication, which is recommended:}
 to MRI. Three areas of the paper could be improved:}
 
 \begin{itemize}
-    \item \textit{the ellipsoidal prostate volume estimate from pathology could be
+    \item \textit{The ellipsoidal prostate volume estimate from pathology could be
         improved by using the prostate segmentation on each of the whole mount
         pathology slides to align the data to the MRI prostate surface. The
         volume comparison is further complicated by the shrinkage of the
         prostate after fixation.}
+
+   Our ellipsoidal approximation of the prostate volume is a rough
+   approximation from the surgical pathology reports, but we felt it was our
+   best metric to approximate prostate size for the following reasons:
+
+   \begin{itemize}
+        \item The gross surgical pathology mesaurements used to make the
+            ellipsoidal volume approximation were done after peri-prostatic
+            tissue was dissected away, but before formalin fixation, avoiding
+            the complication of tissue shrinkage associated with formalin
+            fixation, which our pathologists estimated could be as much as 30\%
+            of the prostate volume.
+        \item Whole mount histology slides were explored for this purpose, but
+            they suffer from post-fixation contraction, $\sim$ 3 mm slice
+            thickiness, and slice tearing and folding that compromise accurate
+            cross-sectional area representations on a single slide.
+            Additionally, the whole mount histology slides require some degree
+            of image registration due to their arbitrary orientation on the
+            slides, adding another source of error.
+    \end{itemize}
+
+    Given the reasons above, we decided to use the tri-axial measurements in
+    gross pathologic evaluation as our closest approximation of the glands
+    total volume as it would have been during MR and ultrasound imaging.  We
+    have added text to Section II.B that details this choice for estimating our
+    prostate volumes:
+
+    \textbf{\input{path_volume_choice}}
 
     \item \textit{Image registration. The three orthogonal dimensions of the
             images do not mean much. The slice thickness in MRI causes
