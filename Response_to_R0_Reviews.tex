@@ -127,6 +127,48 @@ authors to consider before publication, which is recommended:}
             authors should consider adding a discussion of the potential impact
             of the assumed normalization factor to the limitations sections.}
 
+    This is a great comment, and one that we have considered internally during
+    the development of our methodology for this study.  The normalization
+    profile for ARFI images is similar in concept to time gain compensation
+    (TGC) for B-mode images. It is used to apply gain throughout the image to
+    provide a more uniform appearance of the image through depth, which is
+    necessary to account for tissue attenuation and focal gain. The
+    normalization does not change the raw image data since it is applying
+    digital gain. Additionally, when a reader views the images, gain can be
+    added or removed as desired to further improve the image quality.
+    Therefore, on a patient-by-patient basis, the normalization profile can be
+    adjusted to account for differences in each individual to reduce the impact
+    of having an incorrect normalization profile.
+
+    Specifically, for this work, two calibrated CIRS (Norfolk, VA) elasticity
+    phantoms were used to determine the normalization factor; the background
+    stiffness of both materials was nominally 10 kPa Young's modulus, and the
+    acoustic attenuation of the two phantoms were 0.49 and 0.72 dB/cm/MHz,
+    respectively. The displacement-through-time profiles from each phantom were
+    averaged together to approximate a 10 kPa Young's modulus with a 0.6
+    dB/cm/MHz attenuation. The phantom stiffness is slightly lower than the
+    12.3 kPa Young's modulus reported as healthy peripheral zone tissue [1].
+    The attenuation coefficient for prostatic tissue has been reported as
+    0.54-1.04 dB/cm/MHz [2], with additional support that the attenuation is at
+    the lower end of that range [3]. Thus, the normalization profile closely
+    approximates the properties of healthy peripheral zone prostatic tissue,
+    but the transition and central zones as well as pathology such as cancer,
+    BPH, or atrophy can all potentially have different mechanical and
+    acoustical properties.
+
+    [1] Zhai, Liang, et al. ``Correlation between SWEI and ARFI image findings
+    in ex vivo human prostates.'' Ultrasonics Symposium (IUS), 2009 IEEE
+    International. IEEE, 2009.
+
+    [2] K.J Parker, S.R Huang, R.M Lerner et al. Elastic and ultrasonic
+    properties of the prostate IEEE Ultrason Sympos Proc, 2 (1993), pp.
+    1035–1038
+
+    [3] A.E Worthington, J Trachtenberg, M.D Sherar, Ultrasound properties of
+    human prostate tissue during heating, Ultrasound in Medicine \& Biology,
+    Volume 28, Issue 10, October 2002, Pages 1311-1318.
+
+
     \item \textit{Pg 8 lines 205-214 describe that both B-Mode (for prostate
             capsule) and ARFI (for CG) data were used for segmentation.  First,
             how were these data combined?  Second, the use of B-Mode
