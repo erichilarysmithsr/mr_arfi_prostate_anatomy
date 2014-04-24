@@ -8,19 +8,7 @@ location in the prostate, specifically in the peripheral zone, and accurate
 capsule delineation will facilitate future efforts to register 3D imaging
 datasets between ARFI and MR imaging. 
 
-We did not expect perfect agreement between MR and \textbf{ultrasound} imaging
-volumes or tri-axial dimensions since each modality applies a different amount
-of external compression to the rectal wall, which then deforms the prostate.
-The endorectal coil places pressure on the prostate that is dependent on the
-patient's anatomy and overall prostate size, while pressure on the prostate
-during ultrasound imaging is modulated by the urologist when the transducer
-rotation apparatus is locked into position prior to imaging.  The differential
-deformation of the prostate can be easily visualized during the transducer
-alignment process during ultrasound imaging.  It was our goal to apply as
-little pressure while still maintaining uniform contact throughout the
-ultrasound image acquisition. This is critical since poor acoustic coupling to
-the prostate through the rectal wall can greatly diminish ARFI image
-displacement SNR.
+\input{disc_deformation}
 
 The lateral boundaries of the prostate in the \textbf{ultrasound} dataset were
 overestimated relative to MR T2WI, increasing \textbf{B-mode} total volume
@@ -36,6 +24,8 @@ the precision of the lateral measurements, this would have introduced
 significant overhead in the manual segmentation process, with diminishing
 returns given the spatial smoothing of the modeling algorithms that were
 utilized. 
+
+\input{arfi_resolution}
 
 The anterior aspect of the prostate can also be challenging to delineate,
 especially in large prostates, where SNR decreases with increasing depth away

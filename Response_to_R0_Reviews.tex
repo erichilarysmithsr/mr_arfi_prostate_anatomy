@@ -248,7 +248,17 @@ authors to consider before publication, which is recommended:}
 
     \item \textit{How would limits to ARFI resolution impact the results?}
 
-    TO DO
+    ARFI resolution within a native imaging frame is not considered a limiting
+    factor in our ability to delineate the prostate central glands since the
+    scan-conversion and slice decimation introduce resolution distortions that
+    are at least an order-of-magnitude larger than our native image plane
+    resolution.  ARFI image resolution would be a more realistic limiting
+    factor if we were using those primary imaging frames for exclusive gland
+    delineation, but our use of the 3 orthogonal planes for segmentation makes
+    this resolution of higher-order parameter.  We have added to the following
+    text to Section V to emphasize this point to the reader:
+
+    \input{arfi_resolution}
 
     \item \textit{The authors explain that gross pathology weights and axis
             measurements were affected by the presence of peri-prostatic
@@ -350,7 +360,36 @@ to MRI. Three areas of the paper could be improved:}
             Jaccard index type of comparison would be preferable after rigid or
             possibly volume-preserving deformable registration.}
 
-    TO DO
+    We completely agree with the author that a more direct comparison of
+    B-mode/ARFI imaging data with MR after ``unwrapping'' the deformation to
+    register the images with one another would be more complete and satisfying,
+    but two of the primary objectives of this work were (1) to compare prostate
+    appearance and size in each native imaging, as would be seen by a clinician
+    in each setting, and (2) to quantify the differences in the sizes of each
+    dimension without the image registration to allow a clinician to
+    cognitively register the images with known amounts of bias in each
+    dimension.
+
+    We are actively working on analyses that are focusing on comparing each
+    imaging modality with whole mount histology as a gold standard, and then
+    utilizing diffeomorphic image registration to spatially align each image
+    for fused image guidance.  Both of these efforts require dedicated
+    metholodology description, and more importantly, method validation and
+    error analysis that, in our opinions, warrant dedicated publications to be
+    thoroughly presented to readers.
+
+    In the context of the analysis that we have presented in this manuscript
+    and your comment about TRUS deformation, we have expanded our comments
+    about this deformation and its impact on the results, along with more
+    description of the future analysis efforts.
+
+    Section V(A):
+
+    \input{disc_deformation}
+
+    And Section V(C):
+
+    \input{future_diffeomorphic}
 
     \item \textit{discussion of prior work is inadequate. Volumetric
             acquisition and comparison of mechanical imaging with B-mode and
