@@ -40,13 +40,8 @@ accurate spatial localization of the imaging frames in the 3D dataset.
 \input{fig_setup_annotated}
 
 Displacement estimation was performed using a phase-shift estimator on the
-beamformed in-phase and quadrature (IQ) data~\cite{Loupas95,pinton06}. The ARFI
-data were then normalized as a function of depth to account for attenuation and
-focal gain effects.  This normalization was performed using a displacement
-profile measured in a homogeneous tissue-mimicking phantom that was low-pass
-filtered with a cutoff-frequency of 0.8 mm$^{-1}$.  This filtered normalization
-profile was applied to all displacements in the entire data set at each time
-step.
+beamformed in-phase and quadrature (IQ) data~\cite{Loupas95,pinton06}.
+\input{arfi_normalization}
 
 The normalized displacement data were scan-converted using a 2D Delaunay
 triangulation interpolation method in Matlab (R2012b, The MathWorks, Inc,
