@@ -41,9 +41,9 @@ set(h(1),'FaceColor',[0 0 1]);
 set(h(2),'FaceColor',[1 0 0]);
 set(g(1),'FaceColor',[0 1 0]);
 set(g(2),'FaceColor',[1 1 0]);
-ylabel('Gland/Zone Volumes (cm^3)','FontSize',fs)
+ylabel('Volume (cm^3)','FontSize',fs)
 xlabel('Study Subject','FontSize',fs);
-title('MR (Red/Blue) and ARFI (Yellow/Green) Volumes','FontSize',fs);
+title('MR (Red/Blue) and B-mode/ARFI (Yellow/Green) Volumes','FontSize',fs);
 a=axis;
 a(2) = 17;
 axis(a);
@@ -124,9 +124,9 @@ figure;
     hold on
     plot(mr_total_vol/1e3,arfi_total_vol/1e3,'kx','MarkerSize',14,'LineWidth',3);
     plot(mr_total_vol/1e3,mr_arfi_total_fit,'-k','LineWidth',3);
-    title('ARFI:MR Volumes','FontSize',fs);
+    title('B-mode:MR Volumes','FontSize',fs);
     xlabel('MR Volume (cm^3)','FontSize',fs);
-    ylabel('ARFI Volume (cm^3)','FontSize',fs);
+    ylabel('B-mode Volume (cm^3)','FontSize',fs);
     set(gca,'FontSize',fs);            
     %a=axis;                            
     %axis(a);
