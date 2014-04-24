@@ -97,7 +97,7 @@ function mr_arfi_path_axes
         plot(MR_total_axes(:,i)/10,ARFI_total_axes(:,i)/10,'rx','MarkerSize',14,'LineWidth',3);
         plot(MR_central_axes(:,i)/10,ARFI_central_axes(:,i)/10,'bo','MarkerSize',14,'LineWidth',3);
         xlabel('MR Measurement (cm)','FontSize',fs);
-        ylabel('ARFI Measurement (cm)','FontSize',fs);
+        ylabel('B-mode/ARFI Measurement (cm)','FontSize',fs);
 
         set(gca, ...
             'Box'         , 'off'     , ...
@@ -289,8 +289,8 @@ function mr_arfi_path_axes
         close;
 
         % while I'm here, lets compute some stats to include in the caption / text, and LaTeX format it!!
-        fprintf(fid,'ARFI & MR & Total & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Total_OverUnder(:,i)),std(ARFI_MR_Total_OverUnder(:,i)));
-        fprintf(fid,'ARFI & PATH & Total & %s & %.1f $\\pm$  %.1f \\\\ \n',axis_combos{i},mean(ARFI_PATH_Total_OverUnder(:,i)),std(ARFI_PATH_Total_OverUnder(:,i)));
+        fprintf(fid,'B-mode & MR & Total & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(ARFI_MR_Total_OverUnder(:,i)),std(ARFI_MR_Total_OverUnder(:,i)));
+        fprintf(fid,'B-mode & PATH & Total & %s & %.1f $\\pm$  %.1f \\\\ \n',axis_combos{i},mean(ARFI_PATH_Total_OverUnder(:,i)),std(ARFI_PATH_Total_OverUnder(:,i)));
         fprintf(fid,'MR & PATH & Total & %s & %.1f $\\pm$ %.1f \\\\ \n',axis_combos{i},mean(MR_PATH_Total_OverUnder(:,i)),std(MR_PATH_Total_OverUnder(:,i)));
     end;
 
