@@ -88,9 +88,9 @@ function gen_fig_n_fits(fid,w,mr_total_vol,arfi_total_vol,metric)
         fprintf(fid,'\\newcommand{\\pathVolWeightRsq}{%.2f}\n',mr_Rsq);
     else,
         if(strcmp(metric,'pathVol')),
-            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthEast');
+            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('B-mode (R^2 = %.2f)',arfi_Rsq),'Location','NorthEast');
         else,
-            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('ARFI (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
+            legend(sprintf('MR (R^2 = %.2f)',mr_Rsq),sprintf('B-mode (R^2 = %.2f)',arfi_Rsq),'Location','NorthWest');
         end;
         legend boxoff;
         if(strcmp(metric,'pathVol')),
