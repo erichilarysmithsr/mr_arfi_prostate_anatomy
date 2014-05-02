@@ -58,17 +58,19 @@ models of the zonal anatomy volumes were rendered
 Sagittal B-mode and ARFI ultrasound image stacks were segmented in 3D Slicer
 \textbf{by two researchers (TJG \& ZAM)} using the \verb+draweffect+ tool to
 model and measure the prostate capsule and CG volume and tri-axial dimensions
-(Figure~\ref{fig:arfi_segs}).  \input{bmode_arfi_coregistered} The sagittal imaging plane was chosen for
-segmentation because it has a greater number of easily identifiable anatomical
-structures:  seminal vesicles in the left and right posterior base, urethra in
-the mid apex, surrounding fibromuscular tissue in the anterior, and rectum in
-the posterior. Prostate capsule was segmented in B-mode as this modality offers
-both high contrast between prostatic tissue and surrounding extraprostatic fat,
-and better SNR in the anterior capsule region than ARFI images. ARFI images
-were used for CG segmentation.  Prior to segmentation, both the B-mode and ARFI
-image stacks were down-sampled along the sagittal axis to a slice thickness of
-3 mm to reduce the number of manually-segmented frames (18 vs. 360 slices /
-image stack) and match the MRI slice thickness. 
+(Figure~\ref{fig:arfi_segs}).  \input{bmode_arfi_coregistered} The sagittal
+imaging plane was chosen for segmentation because it has a greater number of
+easily identifiable anatomical structures:  seminal vesicles in the left and
+right posterior base, urethra in the mid apex, surrounding fibromuscular tissue
+in the anterior, and rectum in the posterior. Prostate capsules were segmented
+in B-mode images instead of ARFI images since the B-mode images provided high
+image contrast between prostatic tissue and surrounding extraprostatic fat, and
+better SNR in the anterior capsule region. ARFI images were used for CG
+segmentation due to their better contrast over B-mode images.  Prior to
+segmentation, both the B-mode and ARFI image stacks were down-sampled along the
+sagittal axis to a slice thickness of 3 mm to reduce the number of
+manually-segmented frames (18 vs. 360 slices / image stack) and match the MRI
+slice thickness. 
 
 While segmentations were performed along the sagittal plane, label map
 intersections in the axial and coronal views were used during active creation
@@ -79,8 +81,8 @@ segmentation by enabling capsule model intersections in the three orthogonal
 planes during CG segmentation (Figure~\ref{fig:arfi_segs}). The capsule
 provided an outer boundary for the CG segmentation. The capsule and CG models
 dimensions were then measured using the same procedure as the MR images.
-\textbf{All B-mode and ARFI image segmentations were reviewed by an experienced
-    ARFI imaging researcher (KRN).}
+\textbf{All B-mode and ARFI image segmentations were reviewed by two experienced
+    ARFI imaging researchers (MLP and KRN).}
 
 \input{fig_arfi_segs}
 
